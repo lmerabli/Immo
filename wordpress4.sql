@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
 -- version 3.5.1
 -- http://www.phpmyadmin.net
--- vertion original du lance de départ du début de la fin 
+--
 -- Client: localhost
--- Généré le: Lun 13 Octobre 2014 à 16:34
+-- Généré le: Lun 13 Octobre 2014 à 16:42
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.4.3
 
@@ -117,8 +117,8 @@ CREATE TABLE IF NOT EXISTS `wp_options` (
 --
 
 INSERT INTO `wp_options` (`option_id`, `option_name`, `option_value`, `autoload`) VALUES
-(1, 'siteurl', 'http://localhost/wordpress_test_4/wordpress', 'yes'),
-(2, 'home', 'http://localhost/wordpress_test_4/wordpress', 'yes'),
+(1, 'siteurl', 'http://localhost/Immo', 'yes'),
+(2, 'home', 'http://localhost/Immo', 'yes'),
 (3, 'blogname', 'Immo', 'yes'),
 (4, 'blogdescription', 'Just another WordPress site', 'yes'),
 (5, 'users_can_register', '0', 'yes'),
