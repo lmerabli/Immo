@@ -1,0 +1,21 @@
+/*
+Theme Name: immotheme
+Theme URI: http://wordpress.immotheme.com/
+Description: Thème immobilier pour le site pour l'ESGI
+Version: 1.0
+Author: Florian Tournay, Gael Nicole, Lionel Merabli, Adrien Sy
+Tags: immo, esgi
+
+*/
+
+body{
+	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
+	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
+	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
+	background:     -o-linear-gradient( to top, #F0F8FF, #C0C0C0);
+	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);
+}
+
+.banner{
+	color: red;
+}
