@@ -8,7 +8,18 @@ Tags: immo, esgi
 
 */
 
-.test{
+html{
+    font-family: Arial;
+}
+
+body{
+    margin: 0px;
+}
+
+.banner{
+    display: flex;
+    height: 50px;
+    color: red;
 	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
 	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
@@ -16,8 +27,34 @@ Tags: immo, esgi
 	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);
 }
 
-.banner{
-	color: red;
+.banner h1{
+	margin: 0 0 0 10%;
+    height:50px!important;
+    line-height:50px!important;
+    text-align:center; /* centrage horizontal */
+}
+
+.banner p{
+    margin: 0 0 0 10px;
+    height:50px!important;
+    line-height:50px!important;
+    text-align:center; /* centrage horizontal */
+}
+
+.content{
+    width: 80%;
+    display: flex;
+    margin: 0 10% 0 10%;
+}
+
+.body{
+    border-color: red!important;
+    width: 80%;
+}
+
+.side{
+    border-color: green!important;
+    width: 20%;
 }
 
 /* =WordPress Core
