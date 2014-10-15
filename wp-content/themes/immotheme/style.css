@@ -27,6 +27,7 @@ body{
 	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);
 }
 
+
 .banner h1{
 	margin: 0 0 0 10%;
     height:50px!important;
@@ -148,4 +149,5 @@ a img.aligncenter {
     line-height: 17px;
     margin: 0;
     padding: 0 4px 5px;
+>>>>>>> e5f87fa664a0c1d2c341f159bdb220517a51ae5d
 }
