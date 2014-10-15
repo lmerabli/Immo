@@ -1,4 +1,6 @@
-<?php get_header(); ?>
+<?php 
+	get_header(); 
+?>
 	<div class="test">
 		<div class="banner">
 			<!-- variable wordpress du nom du site-->
@@ -8,5 +10,6 @@
 		</div>
 	</div>
 <?php
-get_sidebar();
-get_footer();
+	//get_sidebar();
+	get_footer();
+?>
