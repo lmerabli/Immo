@@ -19,13 +19,13 @@
 define('DB_NAME', 'WordPress4');
 
 /** MySQL database username */
-define('DB_USER', 'root');
+define('DB_USER', 'wp_immo');
 
 /** MySQL database password */
-define('DB_PASSWORD', '');
+define('DB_PASSWORD', 'wp_immo_pw');
 
 /** MySQL hostname */
-define('DB_HOST', 'localhost');
+define('DB_HOST', '83.156.178.59:5555');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
