@@ -9,6 +9,7 @@
       </h3>
       <p class="post-info">
         Posté le <?php the_date(); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
+        <br>Critères: <?php the_meta() ?>
       </p>
       <div class="post-content">
         <?php the_content(); ?>
