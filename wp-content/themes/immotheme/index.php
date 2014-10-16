@@ -14,7 +14,7 @@
 			<!--COLONNE GAUCHE-->
 			<div class="body">
 				<p>Ceci est un contenu test</p>
-				<?php get_template_part( 'loop', 'index' );    ?>
+				<?php get_template_part( 'loop', 'index' ); ?>
 			</div>
 			<!--COLONNE DROITE-->
 			<div class="side">
