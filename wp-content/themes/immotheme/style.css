@@ -49,13 +49,28 @@ body{
 }
 
 .body{
-    border-color: red!important;
+    border: 1px solid red;
     width: 80%;
 }
 
 .side{
-    border-color: green!important;
+    border: 1px solid green;
     width: 20%;
+}
+
+#sidebar ul{
+    list-style-type: none;
+    color: red;
+    font-size: 11px;
+}
+
+#sidebar a{
+    text-decoration: none;
+    color: black;
+}
+
+#sidebar h2{
+    line-height: 1px;
 }
 
 /* =WordPress Core

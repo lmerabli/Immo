@@ -24,7 +24,6 @@ define('DB_USER', 'wp_immo');
 /** MySQL database password */
 define('DB_PASSWORD', 'wp_immo_pw');
 
-
 /** MySQL hostname */
 define('DB_HOST', '83.156.178.59:5555');
 
