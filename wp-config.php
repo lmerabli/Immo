@@ -26,7 +26,6 @@ define('DB_PASSWORD', 'wp_immo_pw');
 
 /** MySQL hostname */
 define('DB_HOST', '83.156.178.59:5555');
-//define('DB_HOST', '192.168.0.2:3306');
 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
