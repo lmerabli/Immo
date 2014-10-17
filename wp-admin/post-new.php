@@ -16,6 +16,11 @@ elseif ( in_array( $_GET['post_type'], get_post_types( array('show_ui' => true )
 else
 	wp_die( __('Invalid post type') );
 
+// echo '<pre>';
+// print_r( get_post_type_object( $post_type ) );
+// echo '</pre>';
+
+
 $post_type_object = get_post_type_object( $post_type );
 
 if ( 'post' == $post_type ) {
