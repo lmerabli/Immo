@@ -8,70 +8,36 @@ Tags: immo, esgi
 
 */
 
-html{
-    font-family: Arial;
-}
+html{font-family: Arial;}
 
-body{
-    margin: 0px;
-}
+body{margin: 0px;}
 
-.banner{
-    display: flex;
-    height: 50px;
-    color: red;
+.banner{height: 50px;color: red;
 	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
 	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:     -o-linear-gradient( to top, #F0F8FF, #C0C0C0);
-	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);
-}
+	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);}
+    #banner-text{width: 976px; border: 1px solid black; display: flex; margin: 0 auto 0 auto;}
+    #banner-text h1{font-size: 2.5em; margin: 0 0 0 20px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
+    #banner-text p{margin: 0 0 0 10px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
 
+.menu{border: 1px solid blue; width: 976px; margin: 0 auto 0 auto;}
+    .menu ul{list-style-type: none; padding-left: 20px;}
+    .menu .page_item a{text-transform : uppercase; font-weight: bold; text-decoration: none;}
 
-.banner h1{
-	margin: 0 0 0 10%;
-    height:50px!important;
-    line-height:50px!important;
-    text-align:center; /* centrage horizontal */
-}
+.content{width: 976px; display: flex; margin: 0 auto 0 auto;}
+    .post .post-title a, .post .post-info a{text-decoration: none; color: black;}
+    .post .post-info a{font-weight: bold;}
+    .post .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
+    .post-content p img{max-width: 150px; height: auto;}
 
-.banner p{
-    margin: 0 0 0 10px;
-    height:50px!important;
-    line-height:50px!important;
-    text-align:center; /* centrage horizontal */
-}
+    .body{border: 1px solid red; width: 690px; padding: 20px;}
 
-.content{
-    width: 80%;
-    display: flex;
-    margin: 0 10% 0 10%;
-}
-
-.body{
-    border: 1px solid red;
-    width: 80%;
-}
-
-.side{
-    border: 1px solid green;
-    width: 20%;
-}
-
-#sidebar ul{
-    list-style-type: none;
-    color: red;
-    font-size: 11px;
-}
-
-#sidebar a{
-    text-decoration: none;
-    color: black;
-}
-
-#sidebar h2{
-    line-height: 1px;
-}
+    .side{border: 1px solid green; width: 286px;}
+        #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
+        #sidebar a{text-decoration: none; color: black;}
+        #sidebar h2{line-height: 1px;}
 
 /* =WordPress Core
 -------------------------------------------------------------- */

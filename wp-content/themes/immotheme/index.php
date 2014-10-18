@@ -3,13 +3,17 @@
 	<div>
 
 		<div class="banner">
+			<div id="banner-text">
 				<!-- variable wordpress du nom du site-->
 				<h1><?php bloginfo('name'); ?></h1>
 				<!-- variable wordpress du slogan du site-->
 				<p><?php bloginfo('description'); ?></p>
+			</div>
 		</div>
-
-
+		<div class="menu">
+			<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
+			<?php wp_nav_menu( array( 'menu' => 'NOM DU MENU' , 'sort_column' => 'menu_order' , 'container' => '<ul>' , 'container_id' =>  'ID CONTAINER' , 'menu_class' => 'CLASSE CSS')); ?>
+		</div>
 		<div class="content">
 			<!--COLONNE GAUCHE-->
 			<div class="body">
