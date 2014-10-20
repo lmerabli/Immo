@@ -8,8 +8,28 @@
 			</div>
 			<!--COLONNE DROITE-->
 			<div class="side">
+
+				<!--### CONNEXION ###-->
+				<!--SI L'UTILISATEUR EST CONNECTE-->
+				<?php if( is_user_logged_in() ): ?>
+					<div class="connect-box">
+						VOUS ETES CONNECTE
+					</div>
+				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
+				<?php else :?>
+					<!-- BOITE DE CONNEXION-->
+					<div class="connect-box">
+						<?php wp_login_form(); ?>
+					</div>
+				<?php endif; ?>
+
+				<!-- FORMULAIRE DE RECHERCHE -->
 				<?php get_search_form(); ?>
+
+				<!-- BARRE LATERALE -->
 				<?php get_sidebar(); ?>
 			</div>
+
+			<!-- FOOTER -->
 			<?php get_footer(); ?>
 

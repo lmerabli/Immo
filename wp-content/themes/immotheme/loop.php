@@ -23,7 +23,9 @@
 
       <!--Contenu du post-->
       <div class="post-content">
-        <?php the_content("Lire la suite"); ?>
+
+        <?php the_excerpt("Lire la suite"); ?>
+
         <?php comments_popup_link(_('Aucun commentaire'),_('<span>1</span> commentaire'),_('<span>%</span> commentaires'))?>
       </div>
     </div>
