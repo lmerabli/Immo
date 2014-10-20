@@ -1,5 +1,6 @@
 <?php if (have_posts()) : ?>
   <p class="title">
+    Tout les articles:
     <!--Si des posts existent-->
   </p>
 
@@ -31,6 +32,6 @@
 <?php else : ?>
   <!--Si il n'y a pas de posts existants-->
   <p class="nothing">
-    Il n'y a pas de Post à afficher !
+    Aucun article à afficher !
   </p>
 <?php endif; ?>

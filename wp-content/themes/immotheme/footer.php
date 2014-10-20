@@ -13,5 +13,5 @@
 		</div><!-- #page -->
 
 		<?php wp_footer(); ?>
-	</body>
-</html>
+	</body> <!-- Fin body -->
+</html> <!-- Fin html -->
