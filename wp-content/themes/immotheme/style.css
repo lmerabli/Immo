@@ -8,146 +8,92 @@ Tags: immo, esgi
 
 */
 
-html{
-    font-family: Arial;
-}
+html{font-family: Arial;}
 
-body{
-    margin: 0px;
-}
+body{margin: 0px;}
 
-.banner{
-    display: flex;
-    height: 50px;
-    color: red;
+.banner{height: 50px;color: red;
 	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
 	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:     -o-linear-gradient( to top, #F0F8FF, #C0C0C0);
-	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);
-}
+	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);}
+    #banner-text{width: 976px; border: 1px solid black; display: flex; margin: 0 auto 0 auto;}
+    #banner-text h1{font-size: 2.5em; margin: 0 0 0 20px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
+    #banner-text p{margin: 0 0 0 10px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
+
+/*.menu{border: 1px solid blue; width: 976px; margin: 0 auto 0 auto;}
+    .menu ul{list-style-type: none; padding-left: 20px;}
+    .menu .page_item a{text-transform : uppercase; font-weight: bold; text-decoration: none;}*/
+
+.content{width: 976px; display: flex; margin: 0 auto 0 auto;}
+    .post .post-title a, .post .post-info a{text-decoration: none; color: black;}
+    .post .post-info a{font-weight: bold;}
+    .post .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
+    .post-content p img{max-width: 150px; height: auto;}
+
+    .body{border: 1px solid red; width: 690px; padding: 20px;}
+
+    .side{border: 1px solid green; width: 286px;}
+        .connect-box{border: 1px solid black;}
+
+        #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
+        #sidebar a{text-decoration: none; color: black;}
+        #sidebar h2{line-height: 1px;}
 
 
-.banner h1{
-	margin: 0 0 0 10%;
-    height:50px!important;
-    line-height:50px!important;
-    text-align:center; /* centrage horizontal */
-}
+/* MENU PERSONALISABLE */
+ 
+#menu{margin: 0 auto 0 auto; height:30px; width: 976px; background:red; border: 1px solid red}
+    #menu ul{list-style:none; margin:0; padding:0; font:bold 12pt Arial, Helvetica, sans-serif;}
+        #menu li{position:relative; display:block; float:left; margin-right:1px;}
+            #menu a{display:block; background:red; color:#eee; text-decoration:none; padding:0 10px; line-height:31px;}
 
-.banner p{
-    margin: 0 0 0 10px;
-    height:50px!important;
-    line-height:50px!important;
-    text-align:center; /* centrage horizontal */
-}
+    /* Sous-menu 1 */
+    #menu ul ul{position:absolute; left:0; top:31px; z-index:99999; display:none; width:180px; float:left; font:lighter 10pt Arial, Helvetica, sans-serif; box-shadow:0px 3px 3px rgba(0,0,0,0.2);}
+        #menu ul ul li{min-width:180px;}
 
-.content{
-    width: 80%;
-    display: flex;
-    margin: 0 10% 0 10%;
-}
+        /* Sous-menu 2 */
+        #menu ul ul ul{left:100%; top:0;}
+            #menu ul ul a{background:#777; line-height:1em; padding:10px; width:160px; height:auto;}
 
-.body{
-    border: 1px solid red;
-    width: 80%;
-}
-
-.side{
-    border: 1px solid green;
-    width: 20%;
-}
-
-#sidebar ul{
-    list-style-type: none;
-    color: red;
-    font-size: 11px;
-}
-
-#sidebar a{
-    text-decoration: none;
-    color: black;
-}
-
-#sidebar h2{
-    line-height: 1px;
-}
+        #menu li:hover > a,
+        #menu ul ul :hover > a{background:#777; color:#fff;}
+            #menu ul li:hover > ul{display:block;}
+                #menu ul li.current_page_item > a,
+                #menu ul li.current-menu-ancestor > a,
+                #menu ul li.current-menu-item > a,
+                #menu ul li.current-menu-parent > a{background-color:#555;}
 
 /* =WordPress Core
 -------------------------------------------------------------- */
-.alignnone {
-    margin: 5px 20px 20px 0;
-}
+.alignnone {margin: 5px 20px 20px 0;}
 
 .aligncenter,
-div.aligncenter {
-    display: block;
-    margin: 5px auto 5px auto;
-}
+div.aligncenter {display: block; margin: 5px auto 5px auto;}
 
-.alignright {
-    float:right;
-    margin: 5px 0 20px 20px;
-}
+.alignright {float:right; margin: 5px 0 20px 20px;}
 
-.alignleft {
-    float: left;
-    margin: 5px 20px 20px 0;
-}
+.alignleft {float: left; margin: 5px 20px 20px 0;}
 
-a img.alignright {
-    float: right;
-    margin: 5px 0 20px 20px;
-}
+a img.alignright {float: right; margin: 5px 0 20px 20px;}
 
-a img.alignnone {
-    margin: 5px 20px 20px 0;
-}
+a img.alignnone {margin: 5px 20px 20px 0;}
 
-a img.alignleft {
-    float: left;
-    margin: 5px 20px 20px 0;
-}
+a img.alignleft {float: left; margin: 5px 20px 20px 0;}
 
-a img.aligncenter {
-    display: block;
-    margin-left: auto;
-    margin-right: auto
-}
+a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 
-.wp-caption {
-    background: #fff;
-    border: 1px solid #f0f0f0;
+.wp-caption {background: #fff; border: 1px solid #f0f0f0;
     max-width: 96%; /* Image does not overflow the content area */
-    padding: 5px 3px 10px;
-    text-align: center;
-}
+    padding: 5px 3px 10px; text-align: center;}
 
-.wp-caption.alignnone {
-    margin: 5px 20px 20px 0;
-}
+.wp-caption.alignnone {margin: 5px 20px 20px 0;}
 
-.wp-caption.alignleft {
-    margin: 5px 20px 20px 0;
-}
+.wp-caption.alignleft {margin: 5px 20px 20px 0;}
 
-.wp-caption.alignright {
-    margin: 5px 0 20px 20px;
-}
+.wp-caption.alignright {margin: 5px 0 20px 20px;}
 
-.wp-caption img {
-    border: 0 none;
-    height: auto;
-    margin: 0;
-    max-width: 98.5%;
-    padding: 0;
-    width: auto;
-}
+.wp-caption img {border: 0 none; height: auto; margin: 0; max-width: 98.5%; padding: 0; width: auto;}
 
-.wp-caption p.wp-caption-text {
-    font-size: 11px;
-    line-height: 17px;
-    margin: 0;
-    padding: 0 4px 5px;
->>>>>>> e5f87fa664a0c1d2c341f159bdb220517a51ae5d
-}
+.wp-caption p.wp-caption-text {font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px;}

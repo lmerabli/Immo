@@ -85,4 +85,8 @@
 		return $html;
 	}
 
+
+	// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
+	register_nav_menus(array( 'header' => 'Menu principal (header)'));
+
 ?>

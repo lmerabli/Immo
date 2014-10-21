@@ -1,24 +1,35 @@
 
 <?php get_header(); ?>
 	<div>
-		<div class="banner">
-				<!-- variable wordpress du nom du site-->
-				<h1><?php bloginfo('name'); ?></h1>
-				<!-- variable wordpress du slogan du site-->
-				<p><?php bloginfo('description'); ?></p>
-		</div>
-
 		<div class="content">
 			<!--COLONNE GAUCHE-->
 			<div class="body">
-				<p>Ceci est un contenu test</p>
 				<?php get_template_part( 'loop', 'index' ); ?>
 			</div>
 			<!--COLONNE DROITE-->
 			<div class="side">
-				<?php get_search_form(); ?>
-				<?php get_sidebar(); ?>
 
+				<!--### CONNEXION ###-->
+				<!--SI L'UTILISATEUR EST CONNECTE-->
+				<?php if( is_user_logged_in() ): ?>
+					<div class="connect-box">
+						VOUS ETES CONNECTE
+					</div>
+				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
+				<?php else :?>
+					<!-- BOITE DE CONNEXION-->
+					<div class="connect-box">
+						<?php wp_login_form(); ?>
+					</div>
+				<?php endif; ?>
+
+				<!-- FORMULAIRE DE RECHERCHE -->
+				<?php get_search_form(); ?>
+
+				<!-- BARRE LATERALE -->
+				<?php get_sidebar(); ?>
 			</div>
-				<?php get_footer(); ?>
+
+			<!-- FOOTER -->
+			<?php get_footer(); ?>
 
