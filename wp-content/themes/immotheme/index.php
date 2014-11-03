@@ -13,7 +13,8 @@
 				<!--SI L'UTILISATEUR EST CONNECTE-->
 				<?php if( is_user_logged_in() ): ?>
 					<div class="connect-box">
-						VOUS ETES CONNECTE
+						VOUS ETES CONNECTE 
+						<?php echo '<p>', $current_uer->user_login,'</p>'; ?>
 					</div>
 				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
 				<?php else :?>
