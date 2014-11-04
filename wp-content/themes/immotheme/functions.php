@@ -21,8 +21,14 @@
 					,'label' => ''
 					,'class' => ''
 					,'br' => ''
+					,'a_select' => array(	0 => '*'
+										,1 => 'tata'
+										,2 => 'toto'
+									)
 				);
 */
+	
+	
 	function input_txt($a_opt) {
 		$html = '';
         
@@ -70,7 +76,7 @@
 	}
 
 
-    function textArea($a_opt) {
+    function text_area($a_opt) {
 		$html = '';
 		
         if ($a_opt['label'] != 'null') {
@@ -85,6 +91,28 @@
 		return $html;
 	}
 
+	function select_opt($a_opt){
+		$html = '';
+        
+        if ($a_opt['label'] != 'null') {
+            if (!empty($a_opt['label'])) { $sep = ' :'; } else { $sep = '  '; }
+            $html.= '<label class="'.$a_opt['class'].'" for="'.$a_opt['name'].'">'.$a_opt['label'].$sep.'</label>';
+        }
+        
+        
+        $html.= '<select name="'.$a_opt['name'].'" id="'.$a_opt['name'].'">';
+		  	
+			foreach($a_opt['a_select'] as $key=>$value){
+				if($a_opt['value'] == $key){ $selected = 'selected'; }else{ $selected = ''; }
+				
+				$html.= '<option value="'.$key.'" '.$selected.' >'.$value.'</option>';	
+			}		
+		$html.= '</select>';
+        
+        
+        
+        return $html;
+	}
 
 	// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
 	register_nav_menus(array( 'header' => 'Menu principal (header)'));
