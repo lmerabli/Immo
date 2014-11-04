@@ -1,11 +1,15 @@
 
 <?php get_header(); ?>
-	<div>
+	<div class="encart">
+
+		<!-- PARTIE CENTRALE-->
 		<div class="content">
+
 			<!--COLONNE GAUCHE-->
 			<div class="body">
 				<?php get_template_part( 'loop', 'index' ); ?>
 			</div>
+
 			<!--COLONNE DROITE-->
 			<div class="side">
 
@@ -14,7 +18,7 @@
 				<?php if( is_user_logged_in() ): ?>
 					<div class="connect-box">
 						VOUS ETES CONNECTE 
-						<?php echo '<p>', $current_uer->user_login,'</p>'; ?>
+						<?php echo '<p>', $current_user->user_login,'</p>'; ?>
 					</div>
 				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
 				<?php else :?>
@@ -31,6 +35,6 @@
 				<?php get_sidebar(); ?>
 			</div>
 
-			<!-- FOOTER -->
+			<!-- APPEL AU FICHIER FOOTER -->
 			<?php get_footer(); ?>
 

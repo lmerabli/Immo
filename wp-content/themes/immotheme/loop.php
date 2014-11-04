@@ -18,7 +18,8 @@
       <p class="post-info">
         Le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
         <!--Futurs critères de séléction-->
-        <br>Critères: <?php the_meta() ?>
+        <br>Critères sélectionnés: 
+        <?php the_meta() ?>
       </p>
 
       <!--Contenu du post-->

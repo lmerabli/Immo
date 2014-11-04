@@ -10,6 +10,10 @@
 
 	}
 
+	function addCss(){
+		wp_enqueue_style( 'css-xxx', get_bloginfo('template_url').'/css/index.css' );
+	}
+	add_action("wp_enqueue_scripts", "addCss");
 
 /********************************************************************************/	
 /******************************* TOOLS BOX **************************************/	
