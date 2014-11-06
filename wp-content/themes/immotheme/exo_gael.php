@@ -80,7 +80,7 @@
 							,'br' => 1
 						);
 		
-		echo input_txt($a_ville);
+		echo input_txt($a_piece);
 		
 		$a_chambre = array(	'name' => 'nb_chambre' 
 							,'value' => $nb_chambre
@@ -89,7 +89,7 @@
 							,'br' => 1
 						);
 		
-		echo input_txt($a_ville);
+		echo input_txt($a_chambre);
 		
 		$a_type = array(	'name' => 'type_bien' 
 							,'value' => $type_bien
