@@ -3,12 +3,19 @@
 	require 'exo_gael.php';
 	
 	//script pour inclure les fichier css et js surement a completer
-	function theme_name_scripts(){
+	/*
+function theme_name_scripts(){
 		wp_enqueue_style('style_name', get_stylesheet_uri() );
 		wp_enqueue_script('script_name', get_template_directory_uri() );
 		
 
 	}
+*/
+	
+	function my_admin_theme_style() {
+	    wp_enqueue_style('my-admin-theme', get_stylesheet_uri('style.css', __FILE__));
+	}
+	add_action('admin_enqueue_scripts', 'my_admin_theme_style');
 
 	function addCss(){
 		wp_enqueue_style( 'css-xxx', get_bloginfo('template_url').'/css/index.css' );
