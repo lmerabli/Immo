@@ -5,7 +5,14 @@
   </p>
 
   <!--Boucle parcourant tout les articles-->
-  <?php while (have_posts()) : the_post(); ?>
+  <?php 
+
+  query_posts( array (
+        'post_type' => 'immo',
+        'posts_per_page' => 0
+        ) );
+
+  while (have_posts()) : the_post(); ?>
     <!--Article-->
     <div class="post">
       <!--Titre de l'article-->
