@@ -18,6 +18,15 @@
 							
 											)
 		);
+		
+		register_taxonomy( 'surface', 'immo', array( 'hierarchical' => true, 'label' => 'Surface', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'prix', 'immo', array( 'hierarchical' => true, 'label' => 'Prix', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'cp', 'immo', array( 'hierarchical' => true, 'label' => 'Code Postale', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'ville', 'immo', array( 'hierarchical' => true, 'label' => 'Ville', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'nb_piece', 'immo', array( 'hierarchical' => true, 'label' => 'Nombre de pieces', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'nb_chambre', 'immo', array( 'hierarchical' => true, 'label' => 'Nombre de chambres', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'type_bien', 'immo', array( 'hierarchical' => true, 'label' => 'Type de Bien', 'query_var' => true, 'rewrite' => true ) );
+		
 
 	}
 
