@@ -26,15 +26,17 @@ body{margin: 0px;}
     .menu ul{list-style-type: none; padding-left: 20px;}
     .menu .page_item a{text-transform : uppercase; font-weight: bold; text-decoration: none;}*/
 
-.content{width: 976px; display: flex; margin: 0 auto 0 auto;}
+/* PARTIE CENTRALE - CONTENT */ 
+.encart{width:976px; margin: 0 auto;}
+.content{width: 100%; display: flex; margin: 0 auto 0 auto;}
     .post .post-title a, .post .post-info a{text-decoration: none; color: black;}
     .post .post-info a{font-weight: bold;}
     .post .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
     .post-content p img{max-width: 150px; height: auto;}
 
-    .body{border: 1px solid red; width: 690px; padding: 20px;}
+    .body{border: 1px solid red; width: 70.6%; padding: 20px;}
 
-    .side{border: 1px solid green; width: 286px;}
+    .side{border: 1px solid green; width: 29.4%;}
         .connect-box{border: 1px solid black;}
 
         #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
@@ -98,14 +100,9 @@ a img.aligncenter {display: block; margin-left: auto; margin-right: auto}
 
 .wp-caption p.wp-caption-text {font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px;}
 
-
-
-
-
-
-
 /* menu de gael */
 .label_admin{
 	display: inline-block;
-	width: 150px;
+	width: 120px;
 }
+

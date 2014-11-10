@@ -5,7 +5,14 @@
   </p>
 
   <!--Boucle parcourant tout les articles-->
-  <?php while (have_posts()) : the_post(); ?>
+  <?php 
+
+  query_posts( array (
+        'post_type' => 'immo',
+        'posts_per_page' => 0
+        ) );
+
+  while (have_posts()) : the_post(); ?>
     <!--Article-->
     <div class="post">
       <!--Titre de l'article-->
@@ -18,7 +25,8 @@
       <p class="post-info">
         Le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
         <!--Futurs critères de séléction-->
-        <br>Critères: <?php the_meta() ?>
+        <br>Critères sélectionnés: 
+        <?php the_meta() ?>
       </p>
 
       <!--Contenu du post-->
