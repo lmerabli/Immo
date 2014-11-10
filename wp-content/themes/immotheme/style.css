@@ -12,15 +12,16 @@ html{font-family: Arial;}
 
 body{margin: 0px;}
 
-.banner{height: 50px;color: red;
+.banner{height: 200px;color: #fff;
 	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
 	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:     -o-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);}
-    #banner-text{width: 976px; border: 1px solid black; display: flex; margin: 0 auto 0 auto;}
-    #banner-text h1{font-size: 2.5em; margin: 0 0 0 20px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
-    #banner-text p{margin: 0 0 0 10px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
+    #banner-text{width: 976px; height: 100%; border: 1px solid black; display: flex; text-align:center; margin: 0 auto 0 auto; background: url(./images/logo.png);}
+        #banner-text .text-bloc{margin:0 10px; display:inline-block; text-align:left; line-height: 200px}
+        #banner-text .website-name{font-size: 7em;}
+        #banner-text .website-slogan{font-size: 3em;}
 
 /*.menu{border: 1px solid blue; width: 976px; margin: 0 auto 0 auto;}
     .menu ul{list-style-type: none; padding-left: 20px;}
@@ -28,7 +29,7 @@ body{margin: 0px;}
 
 /* PARTIE CENTRALE - CONTENT */ 
 .encart{width:976px; margin: 0 auto;}
-.content{width: 100%; display: flex; margin: 0 auto 0 auto;}
+.content{width: 100%; display: inline-flex; margin: 0 auto 0 auto;}
     .post .post-title a, .post .post-info a{text-decoration: none; color: black;}
     .post .post-info a{font-weight: bold;}
     .post .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}

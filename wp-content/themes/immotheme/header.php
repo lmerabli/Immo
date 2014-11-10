@@ -9,10 +9,14 @@
 	</head>
 	<div class="banner">
 			<div id="banner-text">
-				<!-- variable wordpress du nom du site-->
-				<h1><?php bloginfo('name'); ?></h1>
-				<!-- variable wordpress du slogan du site-->
-				<p><?php bloginfo('description'); ?></p>
+				<div class="text-bloc website-name">
+					<!-- variable wordpress du nom du site-->
+					<label onclick="location.href='<?php echo get_settings('home'); ?>';" style="cursor: pointer;"><?php bloginfo('name'); ?></label>
+				</div>
+				<div class="text-bloc website-slogan">
+					<!-- variable wordpress du slogan du site-->
+					<label><?php bloginfo('description'); ?></label>
+				</div>
 			</div>
 		</div>
 	<div id="menu" role="navigation">
