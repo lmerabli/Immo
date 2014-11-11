@@ -12,20 +12,20 @@
 
 			<!--COLONNE DROITE-->
 			<div class="side">
-
-				<!--### CONNEXION ###-->
-				<!--SI L'UTILISATEUR EST CONNECTE-->
-				<?php if( is_user_logged_in() ): ?>
-					<div class="connect-box connect-box_connected">
-						<?php echo '<p>Bienvenue ', $current_user->user_login,' !</p>'; ?>
-					</div>
-				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
-				<?php else :?>
-					<!-- BOITE DE CONNEXION-->
-					<div class="connect-box connect-box_notconnected">
-						<?php wp_login_form(); ?>
-					</div>
-				<?php endif; ?>
+				<div class="login-box">
+					<!--SI L'UTILISATEUR EST CONNECTE-->
+					<?php if( is_user_logged_in() ): ?>
+						<div class="connect-box connect-box_connected">
+							<?php echo '<p>Bienvenue ', $current_user->user_login,' !</p>'; ?>
+						</div>
+					<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
+					<?php else :?>
+						<!-- BOITE DE CONNEXION-->
+						<div class="connect-box connect-box_notconnected">
+							<?php wp_login_form(); ?>
+						</div>
+					<?php endif; ?>
+				</div>
 
 				<!-- FORMULAIRE DE RECHERCHE -->
 				<?php get_search_form(); ?>

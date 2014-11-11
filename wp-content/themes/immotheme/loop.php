@@ -1,6 +1,6 @@
 <?php if (have_posts()) : ?>
   <p class="title">
-    Tout les articles:
+    Tout les biens immobiliers:
     <!--Si des posts existent-->
   </p>
 
@@ -23,9 +23,9 @@
 
       <!-- Informations de la date, la catégorie, et l'auteur du post-->
       <p class="post-info">
-        Le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
+        Publié le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
         <!--Futurs critères de séléction-->
-        <br>Critères sélectionnés: 
+        <br><br>Critères sélectionnés: 
         <?php the_meta() ?>
       </p>
 
