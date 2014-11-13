@@ -56,7 +56,7 @@ body{margin: 0px;}
                 #menu ul li.current-menu-parent > a{background-color:#555;}
 
 
-/* PARTIE CENTRALE - LOOP */ 
+/* ###### PARTIE CENTRALE - LOOP ###### */ 
 .encart{width:976px; margin: 0 auto;}
 .content{width: 100%; display: inline-flex; margin: 0 auto 0 auto;}
     
@@ -82,10 +82,18 @@ body{margin: 0px;}
         #sidebar a{text-decoration: none; color: black;}
         #sidebar h2{line-height: 1px;}
 
-/* PAGE */
+/* ###### PAGE ###### */
 .page{width: 976px; display: flex ; margin: 0 auto; border: 1px solid red;}
     .page .left-side-page{border: 1px solid blue; width: 70.6%;}
     .page .right-side-page{border: 1px solid green; width: 29.4%;}
+
+/* ###### SINGLE ###### */
+.single-post-view{width: 976px; display: flex; margin: 0 auto; border: 1px solid red;}
+    .site-content{border: 1px solid blue; width: 70.6%;}
+    .sidebar-single-post{border: 1px solid green; width: 29.4%;}
+
+
+
 
 
 /* =WordPress Core
