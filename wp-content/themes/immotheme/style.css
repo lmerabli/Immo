@@ -58,21 +58,21 @@ body{margin: 0px;}
 
 /* ###### PARTIE CENTRALE - LOOP ###### */ 
 .encart{width:976px; margin: 0 auto;}
-.content{width: 100%; display: inline-flex; margin: 0 auto 0 auto;}
-    
-    /* Loop partie centrale*/
-    .body{border: 1px solid red; width: 70.6%; padding: 20px;}
-        /*titre du loop*/
-        .title{font-size: 35px; margin: 0px;}
-        /*Articles*/
-            .post .post-title{margin-bottom: 0px;}
-                .post-title a, .post .post-info a{text-decoration: none; color: black;}
-                
-            .post .post-info{margin-top: 0px; font-style: italic;}
-                .post-info a{font-weight: bold;}
+    .content{width: 100%; display: inline-flex; margin: 0 auto 0 auto;}
+        
+        /* Loop partie centrale*/
+        .body{border: 1px solid red; width: 70.6%; padding: 20px;}
+            /*titre du loop*/
+            .title{font-size: 35px; margin: 0px;}
+            /*Articles*/
+                .post .post-title{margin-bottom: 0px;}
+                    .post-title a, .post .post-info a{text-decoration: none; color: black;}
+                    
+                .post .post-info{margin-top: 0px; font-style: italic;}
+                    .post-info a{font-weight: bold;}
 
-                .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
-                .post-content p img{max-width: 150px; height: auto;}
+                    .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
+                    .post-content p img{max-width: 150px; height: auto;}
     
     /* Loop partie latérale*/
     .side{border: 1px solid green; width: 29.4%;}
@@ -83,14 +83,16 @@ body{margin: 0px;}
         #sidebar h2{line-height: 1px;}
 
 /* ###### PAGE ###### */
-.page{width: 976px; display: flex ; margin: 0 auto; border: 1px solid red;}
-    .page .left-side-page{border: 1px solid blue; width: 70.6%;}
-    .page .right-side-page{border: 1px solid green; width: 29.4%;}
+.page-encart{width:976px; margin: 0 auto;}
+    .page-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .left-side-page{border: 1px solid blue; width: 70.6%;}
+        .right-side-page{border: 1px solid green; width: 29.4%;}
 
 /* ###### SINGLE ###### */
-.single-post-view{width: 976px; display: flex; margin: 0 auto; border: 1px solid red;}
-    .site-content{border: 1px solid blue; width: 70.6%;}
-    .sidebar-single-post{border: 1px solid green; width: 29.4%;}
+.single-post-encart{width:976px; margin: 0 auto;}
+    .single-post-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .site-content{border: 1px solid blue; width: 70.6%;}
+        .sidebar-single-post{border: 1px solid green; width: 29.4%;}
 
 
 

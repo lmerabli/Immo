@@ -1,4 +1,5 @@
 <?php get_header(); ?>
+<div class="single-post-encart">
 	<div class="single-post-view">
 		<div id="primary" class="site-content">
 			<div id="content" role="main">
@@ -34,4 +35,5 @@
 			<?php get_sidebar(); ?>
 		</div>
 	</div>
-<?php get_footer(); ?>
+	<?php get_footer(); ?>
+</div>
