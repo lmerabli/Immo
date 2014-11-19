@@ -207,10 +207,19 @@ function myThemeCss( )
 	// on crée un bloc style qui appliquera nos couleurs à l'élément body
 ?>
 	<style type="text/css">
-		body {
+		.body {
 			background-color: <?php echo get_option( 'background_color', '#fff' ); ?>;
 			color: <?php echo get_option( 'text_color', '#222' ); ?>;
 		}
+		.site-content{
+			background-color: <?php echo get_option( 'background_color', '#fff' ); ?>;
+			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+		}
+		.left-side-page{
+			background-color: <?php echo get_option( 'background_color', '#fff' ); ?>;
+			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+		}
+
 	</style>
 <?php
 }
