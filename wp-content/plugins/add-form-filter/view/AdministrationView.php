@@ -139,6 +139,28 @@ class AdministrationView
 						<label for="intervalle_max">Valeur maximale : </label><input type="text" id="intervalle_max" name="intervalle_max" value="" />
 						';
 						break;
+					case Champ::TYPE_LISTE_DEROULANTE:
+						echo '
+						<br />
+						<label>Entrées de la liste: </label><br />
+						<div id="list_items">
+							<input type="text" id="item_1" name="items[1]" value="" /> <input type="button" name="list_delete_item_1" id="list_delete_item_1" value="-" />
+							<script>
+								jQuery(document).ready(function($) {
+									$("#list_delete_item_1").click(function() {
+										if ($("#list_items input[type=text]").length > 1) {
+											$(\'#item_1\').remove();
+											$(\'#list_delete_item_1\').remove();
+											$(\'#br_item_1\').remove();
+										}
+									});
+								});
+							</script>
+							<br id="br_item_1" />
+						</div>
+						<p><input type="button" id="list_add_item" value="+" /></p>
+						';
+						break;
 					default:
 						break;
 				}

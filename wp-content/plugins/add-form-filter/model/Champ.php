@@ -19,7 +19,8 @@ class Champ {
 			"is_coche_defaut"	=> false,
 			"checkbox_value"	=> "",
 			"intervalle_min"	=> 0,
-			"intervalle_max"	=> 0
+			"intervalle_max"	=> 0,
+			"items"				=> array()
 			);
 	
 	public function hydrateFromPost($post) {
@@ -38,6 +39,9 @@ class Champ {
 			case self::TYPE_INTERVALLE:
 				$this->additionalInformations["intervalle_min"] = $post['intervalle_min'];
 				$this->additionalInformations["intervalle_max"] = $post['intervalle_max'];
+				break;
+			case self::TYPE_LISTE_DEROULANTE:
+				$this->additionalInformations["items"] = $post['items'];
 				break;
 			default:
 				break;
@@ -85,6 +89,15 @@ class Champ {
 				
 				<div id="'.$this->getKey().'">
 				</div>';
+				break;
+			case self::TYPE_LISTE_DEROULANTE:
+				$this->valueHtml .= '<select name="'.$this->metaKey.'">';
+				
+				foreach ($this->additionalInformations["items"] as $item) {
+					$this->valueHtml .= '<option value="'.$item.'">'.$item.'</option>';
+				}
+				
+				$this->valueHtml .= '</select>';
 				break;
 			default:
 				break;
