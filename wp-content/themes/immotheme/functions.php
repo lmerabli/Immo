@@ -140,7 +140,7 @@ function theme_register_sidebars() {
 
 	// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
 	register_nav_menus(array( 'header' => 'Menu principal (header)'));
-	
+///ajout bdd option 	
 add_action( 'admin_init', 'ImmoOpotions' );
 
 function ImmoOpotions( )
@@ -150,7 +150,7 @@ function ImmoOpotions( )
 }
 // la fonction myThemeAdminMenu( ) sera exécutée
 // quand WordPress mettra en place le menu d'admin
-
+/// ajout dans la bar admin wordpress
 add_action( 'admin_menu', 'ImmoAdminMenu' );
 
 function ImmoAdminMenu( )
@@ -165,7 +165,7 @@ function ImmoAdminMenu( )
 		'60,6'
 	);
 }
-
+//// page admin
 function VueOptionPage( )
 {
 	echo '<div class="wrap">
@@ -199,7 +199,9 @@ function VueOptionPage( )
 			</p>
 		</form>
 	</div>';
+	
 }
+///// ajout au head
 add_action( 'wp_head', 'myThemeCss' );
 
 function myThemeCss( )
@@ -218,4 +220,10 @@ function myThemeCss( )
 	</style>
 <?php
 }
+
+
+function themeslug_theme_customizer( $wp_customize ) {
+    // Fun code will go here
+}
+add_action('customize_register', 'themeslug_theme_customizer');
 ?>
