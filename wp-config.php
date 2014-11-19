@@ -26,11 +26,7 @@ define('DB_USER', 'root');
 
 
 /** MySQL database password */
-<<<<<<< HEAD
-//define('DB_PASSWORD', 'wp_immo_pw');
-=======
 /*define('DB_PASSWORD', 'wp_immo_pw');*/
->>>>>>> bba7316fb14dcad401e39b0d8e8442939c52b431
 define('DB_PASSWORD', '');
 
 /** MySQL hostname */
