@@ -16,7 +16,8 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'WordPress4');
+//define('DB_NAME', 'WordPress4');
+define('DB_NAME', 'esgi_projet_wordpress');
 
 /** MySQL database username */
 //define('DB_USER', 'wp_immo');
@@ -25,7 +26,7 @@ define('DB_USER', 'root');
 
 /** MySQL database password */
 //define('DB_PASSWORD', 'wp_immo_pw');
-define('DB_PASSWORD', 'root');
+define('DB_PASSWORD', '');
 
 /** MySQL hostname */
 //define('DB_HOST', '83.156.178.59:5555');
