@@ -74,9 +74,13 @@ body{margin: 0px;}
                     .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
                     .post-content p img{max-width: 150px; height: auto;}
     
-    /* Loop partie latérale*/
-    .side{border: 1px solid green; width: 29.4%;}
+    /* Partie latérale*/
+    .side{border: 1px solid green; width: 29.4%; background-color: #F00;}
         .login-box{background-color: #F00;}
+                .welcome_user{color: white;}
+                    .welcome_user a{text-decoration:none; font-weight: bold; color: white;}
+
+                .disconnect_user{text-decoration:none; color: white}
 
         #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
         #sidebar a{text-decoration: none; color: black;}
@@ -86,13 +90,13 @@ body{margin: 0px;}
 .page-encart{width:976px; margin: 0 auto;}
     .page-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
         .left-side-page{border: 1px solid blue; width: 70.6%;}
-        .right-side-page{border: 1px solid green; width: 29.4%;}
+        .right-side-page{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
 /* ###### SINGLE ###### */
 .single-post-encart{width:976px; margin: 0 auto;}
     .single-post-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
         .site-content{border: 1px solid blue; width: 70.6%;}
-        .sidebar-single-post{border: 1px solid green; width: 29.4%;}
+        .sidebar-single-post{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
 
 
