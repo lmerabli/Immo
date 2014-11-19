@@ -17,6 +17,10 @@ function theme_name_scripts(){
 	}
 	add_action('admin_enqueue_scripts', 'my_admin_theme_style');
 
+	function addCss(){
+		wp_enqueue_style( 'css-xxx', get_bloginfo('template_url').'/css/index.css' );
+	}
+	add_action("wp_enqueue_scripts", "addCss");
 
 /********************************************************************************/	
 /******************************* TOOLS BOX **************************************/	

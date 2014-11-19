@@ -20,16 +20,21 @@
 define('DB_NAME', 'esgi_projet_wordpress');
 
 /** MySQL database username */
-//define('DB_USER', 'wp_immo');
+
+/*define('DB_USER', 'wp_immo');*/
 define('DB_USER', 'root');
 
 
 /** MySQL database password */
+<<<<<<< HEAD
 //define('DB_PASSWORD', 'wp_immo_pw');
+=======
+/*define('DB_PASSWORD', 'wp_immo_pw');*/
+>>>>>>> bba7316fb14dcad401e39b0d8e8442939c52b431
 define('DB_PASSWORD', '');
 
 /** MySQL hostname */
-//define('DB_HOST', '83.156.178.59:5555');
+/*define('DB_HOST', '83.156.178.59:5555');*/
 define('DB_HOST', 'localhost');
 
 /** Database Charset to use in creating database tables. */

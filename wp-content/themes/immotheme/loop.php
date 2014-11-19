@@ -1,11 +1,18 @@
 <?php if (have_posts()) : ?>
   <p class="title">
-    Tout les articles:
+    Tout les biens immobiliers:
     <!--Si des posts existent-->
   </p>
 
   <!--Boucle parcourant tout les articles-->
-  <?php while (have_posts()) : the_post(); ?>
+  <?php 
+
+  query_posts( array (
+        'post_type' => 'immo',
+        'posts_per_page' => 0
+        ) );
+
+  while (have_posts()) : the_post(); ?>
     <!--Article-->
     <div class="post">
       <!--Titre de l'article-->
@@ -16,9 +23,10 @@
 
       <!-- Informations de la date, la catégorie, et l'auteur du post-->
       <p class="post-info">
-        Le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
+        Publié le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
         <!--Futurs critères de séléction-->
-        <br>Critères: <?php the_meta() ?>
+        <br><br>Critères sélectionnés: 
+        <?php the_meta() ?>
       </p>
 
       <!--Contenu du post-->
