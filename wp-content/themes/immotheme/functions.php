@@ -11,6 +11,19 @@ function theme_name_scripts(){
 
 	}
 */
+add_action("widgets_init", "theme_register_sidebars");
+
+
+function theme_register_sidebars() {
+      register_sidebar(array(
+                      'before_widget' => '<div id="%1$s" class="widget %2$s">',
+                      'after_widget' => '</div>',
+                      'before_title' => '<h4 class="section">',
+                      'after_title' => '</h4>',
+      ));
+
+      ;
+}
 	
 	function my_admin_theme_style() {
 	    wp_enqueue_style('my-admin-theme', get_stylesheet_uri('style.css', __FILE__));
