@@ -140,5 +140,78 @@ function theme_register_sidebars() {
 
 	// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
 	register_nav_menus(array( 'header' => 'Menu principal (header)'));
+	
+add_action( 'admin_init', 'ImmoOpotions' );
 
+function ImmoOpotions( )
+{
+	register_setting( 'my_theme', 'background_color' ); // couleur de fond
+	register_setting( 'my_theme', 'text_color' );       // couleur du texte
+}
+// la fonction myThemeAdminMenu( ) sera exécutée
+// quand WordPress mettra en place le menu d'admin
+
+add_action( 'admin_menu', 'ImmoAdminMenu' );
+
+function ImmoAdminMenu( )
+{
+	add_menu_page(
+		'Options thème', // le titre de la page
+		'Options thème',            // le nom de la page dans le menu d'admin
+		'administrator',        // le rôle d'utilisateur requis pour voir cette page
+		'Options thème',        // un identifiant unique de la page
+		'VueOptionPage',   // le nom d'une fonction qui affichera la page
+		'',
+		'60,6'
+	);
+}
+
+function VueOptionPage( )
+{
+	echo '<div class="wrap">
+		<h2>Options de mon thème</h2>
+
+		<form method="post" action="options.php">';
+			
+				// cette fonction ajoute plusieurs champs cachés au formulaire
+				// pour vous faciliter le travail.
+				// elle prend en paramètre le nom du groupe d'options
+				// que nous avons défini plus haut.
+
+	settings_fields( 'my_theme' );
+			
+
+	echo'
+	<table class="form-table">
+		<tr valign="top">
+			<th scope="row"><label for="background_color">Couleur de fond</label></th>
+			<td><input type="text" id="background_color" name="background_color" class="small-text" value="'.get_option( 'background_color' ).'" /></td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row"><label for="text_color">Couleur du texte</label></th>
+			<td><input type="text" id="text_color" name="text_color" class="small-text" value="'.get_option( 'text_color' ).'" /></td>
+		</tr>
+	</table>
+
+			<p class="submit">
+				<input type="submit" class="button-primary" value="Mettre à jour" />
+			</p>
+		</form>
+	</div>';
+}
+add_action( 'wp_head', 'myThemeCss' );
+
+function myThemeCss( )
+{
+	// on crée un bloc style qui appliquera nos couleurs à l'élément body
+?>
+	<style type="text/css">
+		body {
+			background-color: <?php echo get_option( 'background_color', '#fff' ); ?>;
+			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+		}
+	</style>
+<?php
+}
 ?>

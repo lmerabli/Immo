@@ -5,7 +5,8 @@
 		<title><?php bloginfo( 'title' ); ?> | Test Wordpress</title>
 		<!--Variable Wordpress du css par défaut-->
 		<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-		<?php wp_head(); ?>		
+		<?php wp_head(); ?>
+		<script type="text/javascript" src="./jquery-ui-1.10.4.custom/js/jquery-1.10.2.js"> </script>
 	</head>
 	<div class="banner">
 		<div id="banner-text">
