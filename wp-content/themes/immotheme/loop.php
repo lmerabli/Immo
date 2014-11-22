@@ -1,4 +1,12 @@
-<?php if (have_posts()) : ?>
+<?php 
+
+/*global $wp_query;
+$args = array_merge( $wp_query->query_vars, array (
+        'post_type' => 'immo',
+        'posts_per_page' => 0
+        ) );
+query_posts( $args );*/
+if (have_posts()) : ?>
   <p class="title">
     Tout les biens immobiliers:
     <!--Si des posts existent-->
@@ -7,7 +15,7 @@
   <!--Boucle parcourant tout les articles-->
   <?php 
 
-  query_posts( array (
+    query_posts( array (
         'post_type' => 'immo',
         'posts_per_page' => 0
         ) );
@@ -26,7 +34,30 @@
         Publié le <?php the_date("d/m/y"); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
         <!--Futurs critères de séléction-->
         <br><br>Critères sélectionnés: 
-        <?php the_meta() ?>
+        <?php // the_meta(); 
+	 /*echo get_post_meta($post->ID,'_surface',true);
+	 echo '<br><br>';
+		 	echo get_post_meta($post->ID,'_prix',true);
+			echo '<br><br>';
+		echo get_post_meta($post->ID,'_cp',true);
+		echo '<br><br>';
+		echo	get_post_meta($post->ID,'_ville',true);
+		echo '<br><br>';
+		echo get_post_meta($post->ID,'_nb_piece',true);
+		echo '<br><br>';
+		echo get_post_meta($post->ID,'_nb_chambre',true);
+		echo '<br><br>';
+		echo  get_post_meta($post->ID,'_type_bien',true);*/
+	echo "<ul class='post-meta'>";
+	foreach(get_post_custom() as $cle => $array_value)
+	{
+		if($cle != "_edit_lock" && $cle != "_edit_last")
+			echo "<li><span class='post-meta-key'>".  str_replace("_", " ", $cle).":</span>". $array_value[0]."</li>";
+	}
+	echo "</ul>";
+	
+	
+	?>
       </p>
 
       <!--Contenu du post-->

@@ -252,6 +252,12 @@ function ImmoAdminMenu( )
 		'',
 		'60,6'
 	);
+	
+    /*add_theme_page( 'Options thème', 'Options thème', 
+    'administrator', 'Options thème', 
+    'VueOptionPage' );*/
+
+
 }
 //// page admin
 function VueOptionPage( )
