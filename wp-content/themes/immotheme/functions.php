@@ -329,6 +329,7 @@ function myThemeCss( )
 ?>
 			
 	<style type="text/css">
+		<?php if (get_option('image_background') != ''){ ?>
 		body, .banner {
 			background: inherit;
 			
@@ -338,9 +339,23 @@ function myThemeCss( )
 		.body{
 			background-color: white;
 		}
+		<?php } 
+		 elseif (get_option('background_color') != ''){ ?>
+		body, .banner {
+			background: inherit;
+			
+			background: <?php echo get_option( 'background_color');?>;
+			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+		}
+		.body{
+			background-color: white;
+		}
+		 <?php }
+		 if (get_option('image_banner') != ''){ ?>
 		#banner-text{
 			background-image: url(<?php echo get_option( 'image_banner');?>);
 		}
+		<?php } ?>
 	</style>
 <?php
 }
