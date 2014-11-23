@@ -9,6 +9,7 @@
 <div class="page-encart">
 	<div class="page-view">
 
+		<!-- Partie centrale -->
 		<div class="left-side-page">
 			<?php if (have_posts()) : ?>
 				<?php while (have_posts()) : the_post(); ?>
@@ -22,6 +23,7 @@
 			<?php endif; ?>
 		</div>
 
+		<!-- Colonne de droite -->
 		<div class="right-side-page">
 			<div class="login-box">
 				<!--SI L'UTILISATEUR EST CONNECTE-->

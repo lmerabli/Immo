@@ -82,22 +82,27 @@ body{margin: 0px;}
 
                 .disconnect_user{text-decoration:none; color: white}
 
-        #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
+        #sidebar ul{list-style-type: none; font-size: 11px;}
         #sidebar a{text-decoration: none; color: black;}
         #sidebar h2{line-height: 1px;}
 
-/* ###### PAGE ###### */
+/* ###### TEMPLATE PAGE ###### */
 .page-encart{width:976px; margin: 0 auto;}
     .page-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
         .left-side-page{border: 1px solid blue; width: 70.6%;}
         .right-side-page{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
-/* ###### SINGLE ###### */
+/* ###### TEMPLATE SINGLE ###### */
 .single-post-encart{width:976px; margin: 0 auto;}
     .single-post-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
         .site-content{border: 1px solid blue; width: 70.6%;}
         .sidebar-single-post{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
+/* ###### TEMPLATE SEARCH ###### */
+.search-encart{width:976px; margin: 0 auto;}
+    .search-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .search-content{border: 1px solid blue; width: 70.6%;}
+        .sidebar-search{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
 
 
