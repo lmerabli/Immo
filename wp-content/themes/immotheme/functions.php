@@ -229,8 +229,8 @@ add_action( 'admin_init', 'ImmoOpotions' );
 
 function ImmoOpotions( )
 {
-	register_setting( 'my_theme', 'background_color' ); // couleur de fond
-	register_setting( 'my_theme', 'text_color' );       // couleur du texte
+	register_setting( 'my_theme', 'background_color' ); // couleur de fond sidebar
+	register_setting( 'my_theme', 'text_color' );       // couleur du texte sidebar
 	register_setting( 'my_theme', 'image_background');
 	register_setting( 'my_theme', 'image_logo');
 	register_setting( 'my_theme', 'image_banner');
@@ -278,15 +278,7 @@ function VueOptionPage( )
 
 	echo'
 	<table class="form-table">
-		<tr valign="top">
-			<th scope="row"><label for="background_color">Couleur de fond</label></th>
-			<td><input type="text" id="background_color" name="background_color" class="small-text" value="'.get_option( 'background_color' ).'" /></td>
-		</tr>
-
-		<tr valign="top">
-			<th scope="row"><label for="text_color">Couleur du texte</label></th>
-			<td><input type="text" id="text_color" name="text_color" class="small-text" value="'.get_option( 'text_color' ).'" /></td>
-		</tr>
+		
 		<tr valign="top">
 			<th scope="row"><label for="image_background">Image background</label></th>
 			
@@ -307,6 +299,15 @@ function VueOptionPage( )
 				<td>	<image id="image_image_banner" src="'.get_option("image_banner").'" width="100"> </td>
 				<td>	<input type ="text" id="input_image_banner" name="image_banner" value="'.get_option('image_banner').'" size="75"></td>
 				<td>	<a href="#" id="image_banner" class="button customaddmedia">Choisir une image</a></td>
+		</tr>
+		<tr valign="top">
+			<th scope="row"><label for="background_color">Couleur de fond de la zone widget</label></th>
+			<td><input type="text" id="background_color" name="background_color" class="small-text" value="'.get_option( 'background_color' ).'" /></td>
+		</tr>
+
+		<tr valign="top">
+			<th scope="row"><label for="text_color">Couleur du texte de la zone widget</label></th>
+			<td><input type="text" id="text_color" name="text_color" class="small-text" value="'.get_option( 'text_color' ).'" /></td>
 		</tr>
 	</table>
 
@@ -351,7 +352,7 @@ function myThemeCss( )
 			background: inherit;
 			
 			background: <?php echo get_option( 'background_color');?>;
-			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+			
 		}
 		.body{
 			background-color: white;
@@ -361,6 +362,16 @@ function myThemeCss( )
 		#banner-text{
 			background-image: url(<?php echo get_option( 'image_banner');?>);
 		}
+		<?php } 
+		if (get_option('background_color') != ''){ ?>
+		.side{border: 1px solid green; width: 29.4%; background-color:<?php echo get_option('background_color'); ?>;}
+			.login-box{background-color: <?php echo get_option('background_color'); ?>;}
+			<?php } 
+		if (get_option('text_color') != ''){ ?>
+				.welcome_user{color: <?php echo get_option( 'text_color' ); ?>;}
+				    .welcome_user a{text-decoration:none; font-weight: bold; color: <?php echo get_option( 'text_color' ); ?>;}
+
+				.disconnect_user{text-decoration:none; color: <?php echo get_option( 'text_color' ); ?>;}
 		<?php } ?>
 	</style>
 <?php
