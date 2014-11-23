@@ -23,18 +23,6 @@ class AdministrationView
 	}
 	
 	public function displayPageList() {
-		
-		
-		
-		$filtre = new Filtre(7);
-		$filtreView = new FiltreView($filtre);
-		
-		echo $filtreView->getForm();
-		
-		die();
-		
-		
-		
 		echo "<h1>".get_admin_page_title()."</h1>
 		<h2>Liste des filtres</h2>";
 		

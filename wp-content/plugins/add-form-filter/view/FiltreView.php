@@ -26,6 +26,8 @@ class FiltreView
 			}
 		}
 		
+		$form .= '<input type="submit" value="Filtrer" />';
+		
 		$form .= '</form>';
 		
 		return $form;
