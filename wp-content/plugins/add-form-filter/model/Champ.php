@@ -191,7 +191,8 @@ class Champ {
 	
 	private function insert() {
 		global $wpdb;
-
+		//echo sprintf("ID : %d // Meta key : %s", $this->idFiltre, $this->metaKey);
+//die();
 		if (empty($this->idFiltre))	return false;
 		if (empty($this->metaKey))	return false;
 		
