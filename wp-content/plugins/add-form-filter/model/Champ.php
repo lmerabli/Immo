@@ -64,7 +64,7 @@ class Champ {
 	public function constructHtml() {
 		switch ($this->type) {
 			case self::TYPE_INPUT:
-				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.'</label> <input type="text" id="'.$this->getKey().'" name="'.$this->getKey().'" value="" />';
+				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.': </label> <input type="text" id="'.$this->getKey().'" name="'.$this->getKey().'" value="" />';
 				break;
 			case self::TYPE_CHECKBOX:
 				$checked = "";
@@ -91,7 +91,9 @@ class Champ {
 				</div>';
 				break;
 			case self::TYPE_LISTE_DEROULANTE:
-				$this->valueHtml .= '<select name="'.$this->metaKey.'">';
+				$this->valueHtml .= '<label for="'.$this->getKey().'">'.$this->label.': </label>';
+				
+				$this->valueHtml .= '<select id ="'.$this->getKey().'" name="'.$this->metaKey.'">';
 				
 				foreach ($this->additionalInformations["items"] as $item) {
 					$this->valueHtml .= '<option value="'.$item.'">'.$item.'</option>';
@@ -191,8 +193,7 @@ class Champ {
 	
 	private function insert() {
 		global $wpdb;
-		//echo sprintf("ID : %d // Meta key : %s", $this->idFiltre, $this->metaKey);
-//die();
+
 		if (empty($this->idFiltre))	return false;
 		if (empty($this->metaKey))	return false;
 		
