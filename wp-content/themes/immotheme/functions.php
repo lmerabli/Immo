@@ -393,23 +393,27 @@ function fL_formulaire($select="")
 		$current_order_by = $_SESSION[ 'post-order-by' ];
 	}
 	$html="";
-	$html .="<form method='post' class='switcher'>";
+	$html .="<form method='post' class='switcher' name='add_form_filter'>";
 	
 	if(!empty($select))
 		$html.=$select;
 	else
 	{
-		$html.='<p><label for="post-order-by">Trier selon :</label>
-			<select id="post-order-by" name="post-order-by" onchange="this.form.submit()">
-			    <option value="date"'.selected( $current_order_by, 'date' ).'>la date</option>
-			    <option value="price"'.selected( $current_order_by, 'price' ).'>le prix</option>
-			</select></p>
-
-			<p><label for="post-order">Ordre de tri :</label>
-			<select id="post-order" name="post-order" onchange="this.form.submit()">
-			    <option value="DESC"'.selected( $current_order, 'DESC' ).'>Décroissant</option>
-			    <option value="ASC"'.selected( $current_order, 'ASC' ).'>Croissant</option>
-			</select></p>';
+//		$html.='<p><label for="post-order-by">Trier selon :</label>
+//			<select id="post-order-by" name="post-order-by" onchange="this.form.submit()">
+//			    <option value="date"'.selected( $current_order_by, 'date' ).'>la date</option>
+//			    <option value="price"'.selected( $current_order_by, 'price' ).'>le prix</option>
+//			</select></p>
+//
+//			<p><label for="post-order">Ordre de tri :</label>
+//			<select id="post-order" name="post-order" onchange="this.form.submit()">
+//			    <option value="DESC"'.selected( $current_order, 'DESC' ).'>Décroissant</option>
+//			    <option value="ASC"'.selected( $current_order, 'ASC' ).'>Croissant</option>
+//			</select></p>';
+		$html.='<label for="3dbd9a2388bf81ba0bad37d777aff572">Prix</label> <input type="text" id="3dbd9a2388bf81ba0bad37d777aff572" name="3dbd9a2388bf81ba0bad37d777aff572" value="" />
+			<label for="f04fb51d518fd323411b4593193d9031">Date</label> <input type="text" id="f04fb51d518fd323411b4593193d9031" name="add_form_filter[date]" class="datepicker" value="" />
+		<label for="df51cccbacbaf45d76e1a785f145fd03">Date_fin</label> <input type="text" id="df51cccbacbaf45d76e1a785f145fd03" name="add_form_filter[date]" class="datepicker" value="" />
+		<input type="submit" value="Filtrer" />';
 	}
 
 	$html.="</form>";
@@ -417,8 +421,8 @@ function fL_formulaire($select="")
 }
 
 
-	add_action( 'init', 'switch_session' );
-	function switch_session() {
+add_action( 'init', 'switch_session' );
+function switch_session() {
 	// J'initialize la session
 	if( ! session_id() )
 	    session_start();
@@ -442,15 +446,23 @@ function fL_formulaire($select="")
     }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-	print_r($q);
+	echo "<pre>";
+	print_r($_POST);
+	echo "</pre>";
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
-    if( ! is_admin() && $q->is_main_query() && is_post_type_archive( 'cpt' ) ) {
-
-        // tri par prix
-        if( 'price' == $_SESSION[ 'post-order-by' ] ) {
-            $q->set( 'meta_key', '_price' );
-            $q->set( 'orderby', 'meta_value_num');
-        }
+    if( ! is_admin() && $q->is_main_query() ) {
+      if (isset($_POST['add_form_filter'])){
+	/*foreach( $_POST['add_form_filter']as $metakey  => $value)
+        {
+            $q->set( 'meta_key', $metakey);
+            $q->set('meta_value',$value);
+        }*/
+	      if(array_key_exists('_date', $_POST['add_form_filter'])){
+		      
+	      }
+	      else
+		$q->set('meta_query',$_POST['add_form_filter']);
+	     
         /* 
         * Par défaut, WordPress tri par date, donc il n'y a pas besoin d'effectuer'
         * un autre overide pour le tri par date ;-)
@@ -460,7 +472,8 @@ function switch_output_order( $q ) {
         */
 
         // Tri croissant ou décroissant
-        $q->set( 'order', $_SESSION[ 'post-order' ] );
+       // $q->set( 'order', $_SESSION[ 'post-order' ] );
+      }
     }
 
     // On retourne la requête

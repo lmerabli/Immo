@@ -3,7 +3,8 @@
 global $wp_query;
 $args = array_merge( $wp_query->query_vars, array (
         'post_type' => 'immo',
-        'posts_per_page' => 0
+        'posts_per_page' => 0,
+	
         ) );
 query_posts( $args );
 if (have_posts()) : ?>
