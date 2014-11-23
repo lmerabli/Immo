@@ -32,6 +32,22 @@
 			</div><!-- #content -->
 		</div><!-- #primary -->
 		<div class="sidebar-single-post">
+			<div class="login-box">
+				<!--SI L'UTILISATEUR EST CONNECTE-->
+				<?php if( is_user_logged_in() ): ?>
+					<div class="connect-box connect-box_connected">
+						<?php echo '<p class="welcome_user">Bienvenue <a href="http://localhost/Immo/wp-admin/profile.php">', $current_user->user_login,' !</a></p>'; ?>
+						<a class="disconnect_user" href="http://localhost/Immo/wp-login.php?action=logout&amp;_wpnonce=7cec4d7f3b">Déconnexion</a>
+					</div>
+				<!--SI L'UTILISATEUR N'EST PAS CONNECTE-->
+				<?php else :?>
+					<!-- BOITE DE CONNEXION-->
+					<div class="connect-box connect-box_notconnected">
+						<?php wp_login_form(); ?>
+					</div>
+				<?php endif; ?>
+			</div>
+
 			<?php get_sidebar(); ?>
 		</div>
 	</div>

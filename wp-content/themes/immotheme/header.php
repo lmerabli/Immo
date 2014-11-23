@@ -5,7 +5,10 @@
 		<title><?php bloginfo( 'title' ); ?> | Test Wordpress</title>
 		<!--Variable Wordpress du css par défaut-->
 		<link rel="stylesheet" type="text/css" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
-		<?php wp_head(); ?>		
+		
+		
+		<?php wp_head(); ?>
+		
 	</head>
 	<div class="banner">
 		<div id="banner-text">
