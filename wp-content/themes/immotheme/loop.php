@@ -52,7 +52,7 @@ if (have_posts()) : ?>
 	foreach(get_post_custom() as $cle => $array_value)
 	{
 		if($cle != "_edit_lock" && $cle != "_edit_last")
-			echo "<li><span class='post-meta-key'>".  str_replace("_", " ", $cle).":</span>". $array_value[0]."</li>";
+			echo "<li><span class='post-meta-key'>".  str_replace("_", " ", $cle).":</span>&nbsp". $array_value[0]."</li>";
 	}
 	echo "</ul>";
 	
