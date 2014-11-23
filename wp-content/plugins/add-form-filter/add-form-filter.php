@@ -14,6 +14,7 @@ require_once 'view/AdministrationView.php';
 require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 require_once 'view/ListView.php';
 require_once 'view/ShortcodeView.php';
+require_once 'view/FiltreView.php';
 
 $plugin = new AddFormFilter();
 
