@@ -6,6 +6,7 @@ class AddFormFilter
 	const DATABASE_PREFIX = "add_form_filter_";
 	const TABLE_NAME_FILTER = "filter";
 	const TABLE_NAME_FIELD = "field";
+	const HTML_TABLE_POST_NAME = "add_form_filter";
 	
 	/**
 	 * 
