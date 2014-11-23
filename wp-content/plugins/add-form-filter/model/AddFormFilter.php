@@ -12,6 +12,7 @@ class AddFormFilter
 	 * @var AdministrationView
 	 */
 	private $administrationView = null;
+	private $shortcodeView = null;
 	
 	/**
 	 * Initialise le plugin
@@ -25,6 +26,8 @@ class AddFormFilter
 		add_action('init', array($this, 'init'));
 		
 		$this->administrationView = new AdministrationView();
+		$this->shortcodeView = new ShortcodeView();
+		
 		add_action('admin_menu', array($this->administrationView, 'addAdminMenu'));
 	}
 	
