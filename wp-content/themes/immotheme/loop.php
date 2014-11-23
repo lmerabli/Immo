@@ -1,11 +1,11 @@
 <?php 
 
-/*global $wp_query;
+global $wp_query;
 $args = array_merge( $wp_query->query_vars, array (
         'post_type' => 'immo',
         'posts_per_page' => 0
         ) );
-query_posts( $args );*/
+query_posts( $args );
 if (have_posts()) : ?>
   <p class="title">
     Tout les biens immobiliers:
@@ -15,10 +15,10 @@ if (have_posts()) : ?>
   <!--Boucle parcourant tout les articles-->
   <?php 
 
-    query_posts( array (
+   /*query_posts( array (
         'post_type' => 'immo',
         'posts_per_page' => 0
-        ) );
+        ) );*/
 
   while (have_posts()) : the_post(); ?>
     <!--Article-->
