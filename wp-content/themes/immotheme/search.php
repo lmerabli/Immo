@@ -10,7 +10,7 @@
         <!-- Partie centrale-->
         <div class="search-content">
             <div class="search-content-head">
-                <h1 class="search-title"><?php printf(__('Résultat de votre recherche: %s', 'Immo'), '' . get_search_query() . ''); ?></h1>
+                <h1 class="search-title"><?php printf(__('Résultat de votre recherche: %s', 'infoway'), '' . get_search_query() . ''); ?></h1>
             </div>
             <div class="search-encart-post">
                 <?php if (have_posts()) : ?>

@@ -81,6 +81,9 @@ class Filtre {
 		return count($this->aoFields);
 	}
 	
+	/**
+	 * @return array[Champ]
+	 */
 	public function getFields() {
 		return $this->aoFields;
 	}

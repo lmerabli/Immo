@@ -12,10 +12,6 @@ class AdministrationView
 		add_submenu_page('add_form_filter', 'Add Form Filter', 'Liste des filtres', 'manage_options', 'add_form_filter', array('AdministrationController', 'managePageList'));
 		add_submenu_page('add_form_filter', 'Add Form Filter', 'Créer un filtre', 'manage_options', 'add_form_filter_create', array('AdministrationController', 'managePageCreate'));
 		add_submenu_page('add_form_filter', 'Add Form Filter', 'Ajouter un post meta key', 'manage_options', 'add_form_filter_add_meta_key', array('AdministrationController', 'managePageAddMetaKey'));
-		
-		// Enregistrement des fonctions liées aux pages
-		/*add_action('load-'.$idPageList, array('AdministrationController', 'managePageList'));
-		add_action('load-'.$idPageCreate, array('AdministrationController', 'processPageCreate'));*/
 	}
 	
 	public function getIdPageList() {

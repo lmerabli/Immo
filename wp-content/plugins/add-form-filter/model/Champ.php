@@ -64,17 +64,17 @@ class Champ {
 	public function constructHtml() {
 		switch ($this->type) {
 			case self::TYPE_INPUT:
-				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.'</label> <input type="text" id="'.$this->getKey().'" name="'.$this->getKey().'" value="" />';
+				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.': </label> <input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().']" value="" />';
 				break;
 			case self::TYPE_CHECKBOX:
 				$checked = "";
 				
 				if ($this->additionalInformations['is_coche_defaut']) $checked = "checked";
 				
-				$this->valueHtml = '<input type="checkbox" id="'.$this->getKey().'" name="'.$this->metaKey.'" value="'.$this->additionalInformations["checkbox_value"].'" '.$checked.' />'.$this->label;
+				$this->valueHtml = '<input type="checkbox" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.'" value="'.$this->additionalInformations["checkbox_value"].']" '.$checked.' />'.$this->label;
 				break;
 			case self::TYPE_CALENDRIER:
-				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.'</label> <input type="text" id="'.$this->getKey().'" name="'.$this->getKey().'" class="datepicker" value="" />';
+				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.'</label> <input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().']" class="datepicker" value="" />';
 				break;
 			case self::TYPE_INTERVALLE:
 				$this->valueHtml = '
@@ -91,7 +91,9 @@ class Champ {
 				</div>';
 				break;
 			case self::TYPE_LISTE_DEROULANTE:
-				$this->valueHtml .= '<select name="'.$this->metaKey.'">';
+				$this->valueHtml .= '<label for="'.$this->getKey().'">'.$this->label.': </label>';
+				
+				$this->valueHtml .= '<select id ="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.']">';
 				
 				foreach ($this->additionalInformations["items"] as $item) {
 					$this->valueHtml .= '<option value="'.$item.'">'.$item.'</option>';

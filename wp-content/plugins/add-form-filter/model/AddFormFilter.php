@@ -6,12 +6,14 @@ class AddFormFilter
 	const DATABASE_PREFIX = "add_form_filter_";
 	const TABLE_NAME_FILTER = "filter";
 	const TABLE_NAME_FIELD = "field";
+	const HTML_TABLE_POST_NAME = "add_form_filter";
 	
 	/**
 	 * 
 	 * @var AdministrationView
 	 */
 	private $administrationView = null;
+	private $shortcodeView = null;
 	
 	/**
 	 * Initialise le plugin
@@ -25,6 +27,8 @@ class AddFormFilter
 		add_action('init', array($this, 'init'));
 		
 		$this->administrationView = new AdministrationView();
+		$this->shortcodeView = new ShortcodeView();
+		
 		add_action('admin_menu', array($this->administrationView, 'addAdminMenu'));
 	}
 	
