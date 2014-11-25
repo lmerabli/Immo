@@ -17,7 +17,7 @@
 
         query_posts( array (
             'post_type' => 'immo',
-            'posts_per_page' => 4
+            'posts_per_page' => 0
             ) );
 
         while (have_posts()) : the_post(); ?>
