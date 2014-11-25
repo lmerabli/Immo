@@ -399,17 +399,7 @@ function fL_formulaire($select="")
 		$html.=$select;
 	else
 	{
-//		$html.='<p><label for="post-order-by">Trier selon :</label>
-//			<select id="post-order-by" name="post-order-by" onchange="this.form.submit()">
-//			    <option value="date"'.selected( $current_order_by, 'date' ).'>la date</option>
-//			    <option value="price"'.selected( $current_order_by, 'price' ).'>le prix</option>
-//			</select></p>
-//
-//			<p><label for="post-order">Ordre de tri :</label>
-//			<select id="post-order" name="post-order" onchange="this.form.submit()">
-//			    <option value="DESC"'.selected( $current_order, 'DESC' ).'>Décroissant</option>
-//			    <option value="ASC"'.selected( $current_order, 'ASC' ).'>Croissant</option>
-//			</select></p>';
+
 		$html.='<label for="c52e22404e0df08b420af080ce558d6a">Prix min: </label> <input type="text" id="c52e22404e0df08b420af080ce558d6a" name="add_form_filter[prix][]" value="" />'
 			. '<label for="c52e22404e0df08b420af080ce558d6a">Prix max: </label> <input type="text" id="c52e22404e0df08b420af080ce558d6a" name="add_form_filter[prix][]" value="" />'
 			. '<label for="6c7927b138d292985b7e1dae123da288">ville: </label> <input type="text" id="6c7927b138d292985b7e1dae123da288" name="add_form_filter[ville][]" value="" />';
@@ -495,24 +485,9 @@ function switch_output_order( $q ) {
 			}
 		}
 	}
-	//$first_array['meta_query']=$array;
-	$q->set('meta_query',$first_array);
-	//	  if(array_key_exists('_date', $_POST['add_form_filter'])){
-	//		      
-	//	  }
-	//	  else
-		//$q->set('meta_query',$_POST['add_form_filter']);
-	     
-        /* 
-        * Par défaut, WordPress tri par date, donc il n'y a pas besoin d'effectuer'
-        * un autre overide pour le tri par date ;-)
-        *
-        * Sauf si, par exemple, vous voulez trier selon une date 
-        * autre que la publication de l'article...
-        */
 
-        // Tri croissant ou décroissant
-       // $q->set( 'order', $_SESSION[ 'post-order' ] );
+	$q->set('meta_query',$first_array);
+	
       }
     }
 
