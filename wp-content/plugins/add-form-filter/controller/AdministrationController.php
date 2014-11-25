@@ -12,6 +12,7 @@ class AdministrationController
 	const QUERY_UPDATE_FILTER = "update_filter";
 	const ACTION_EDIT_FILTER = 'edit';
 	const ACTION_DELETE_FILTER = 'delete';
+	const ACTION_ACTIVATE_FILTER = 'is_actif';
 	
 	/**
 	 * Gestion de l'affichage des pages selon le routage sur la liste des filtres
@@ -108,6 +109,14 @@ class AdministrationController
 					$filtre = new Filtre($_GET['id']);
 					
 					$filtre->delete();
+					
+					$administrationView->displayPageList();
+					break;
+				case self::ACTION_ACTIVATE_FILTER :
+					$filtre = new Filtre($_GET['id']);
+						
+					$filtre->setIsActif(true);
+					$filtre->save();
 					
 					$administrationView->displayPageList();
 					break;

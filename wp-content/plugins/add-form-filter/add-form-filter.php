@@ -6,6 +6,7 @@ Version: 0.1
 */
 
 require_once 'model/AddFormFilter.php';
+require_once 'model/AddFormFilterWidget.php';
 require_once 'model/Filtre.php';
 require_once 'model/Champ.php';
 require_once 'model/AdministrationAjax.php';
