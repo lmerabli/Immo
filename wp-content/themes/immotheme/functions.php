@@ -423,29 +423,29 @@ function fL_formulaire($select="")
 }
 
 
-add_action( 'init', 'switch_session' );
-function switch_session() {
-	// J'initialize la session
-	if( ! session_id() )
-	    session_start();
-
-	// Si le switcher à été utilisé, on change la valeur
-	if( isset( $_POST[ 'post-order' ] ) ) {
-	    $_SESSION[ 'post-order' ] = ( 'ASC' == $_POST['post-order'] ) ? 'ASC' : 'DESC';
-	}
-
-	if( isset( $_POST[ 'post-order-by' ] ) ) {
-	    $_SESSION[ 'post-order-by' ] = ( 'price' == $_POST['post-order-by'] ) ? 'price' : 'date';
-	}
-
-	// S'il n'y a pas d'ordre de défini, on en met un par défaut
-	if( ! isset( $_SESSION[ 'post-order' ] ) )
-	    $_SESSION[ 'post-order' ] = 'ASC';
-
-	if( ! isset( $_SESSION[ 'post-order-by' ] ) )
-	    $_SESSION[ 'post-order-by' ] = 'price';
-
-    }
+//add_action( 'init', 'switch_session' );
+//function switch_session() {
+//	// J'initialize la session
+//	if( ! session_id() )
+//	    session_start();
+//
+//	// Si le switcher à été utilisé, on change la valeur
+//	if( isset( $_POST[ 'post-order' ] ) ) {
+//	    $_SESSION[ 'post-order' ] = ( 'ASC' == $_POST['post-order'] ) ? 'ASC' : 'DESC';
+//	}
+//
+//	if( isset( $_POST[ 'post-order-by' ] ) ) {
+//	    $_SESSION[ 'post-order-by' ] = ( 'price' == $_POST['post-order-by'] ) ? 'price' : 'date';
+//	}
+//
+//	// S'il n'y a pas d'ordre de défini, on en met un par défaut
+//	if( ! isset( $_SESSION[ 'post-order' ] ) )
+//	    $_SESSION[ 'post-order' ] = 'ASC';
+//
+//	if( ! isset( $_SESSION[ 'post-order-by' ] ) )
+//	    $_SESSION[ 'post-order-by' ] = 'price';
+//
+//    }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
 	//echo "<pre>";
