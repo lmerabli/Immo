@@ -478,7 +478,7 @@ function switch_output_order( $q ) {
 					}
 					else
 					{
-						$first_array[$cpt]['key']= '_'.$metakey;
+						$first_array[$cpt]['key']= $metakey;
 						$first_array[$cpt]['value']= $new_array_value;
 						$first_array[$cpt]['compare']='IN';
 						//$q->set( 'meta_query',array($array));
@@ -495,7 +495,6 @@ function switch_output_order( $q ) {
 	}
 	
 	$q->set('meta_query',$first_array);
-	
       }
     }
 
