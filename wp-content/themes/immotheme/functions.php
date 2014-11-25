@@ -138,6 +138,86 @@ function theme_register_sidebars() {
         return $html;
 	}
 
+/////// reseau sociaux
+	
+	add_action('admin_menu','my_pannel');
+
+function my_pannel()
+{
+	add_menu_page
+	(
+		'Réseaux sociaux', 
+		'Réseaux sociaux', 
+		'activate_plugins',
+		'my_pannel',
+		'render_pannel'
+	
+	);
+}
+function render_pannel()
+{
+	wp_enqueue_media();
+	if(isset($_POST['pannel_update']))
+	{	
+		if(!wp_verify_nonce($_POST['pannel_noncename'],'my-pannel'))
+			die('Token non valide');
+		//var_dump($_POST);
+		foreach($_POST['option'] as $name=>$value)
+		{
+			if(empty($value))
+				delete_option($name);
+			else
+				update_option($name,$value);
+		}
+		?>
+		<!-- faire un message  dynamique -->
+		<div id="message" class="updated fade">
+			<p><strong> Bravo ! </strong> Options sauvegard�es avec succ�s </p>
+		</div>
+		<!-- faire un message  dynamique -->
+		<?php
+	}
+		
+	?>
+	<div class="wrap theme-options-page">
+		<div id="icon-option-general" class="icon32"> </div>
+		<h2> R�seaux Sociaux</h2>
+		<form action="" method="post">
+		
+			<div class="theme-option-group">
+				<table cellspacing=0 class="widefat options-table">
+					<thead>
+						<tr>
+							<th colspan="2"> Mes R�seaux sociaux </th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row"><label for="header">Header</label>
+						<th>
+						<td>
+								<image src='<?php get_option('header','')?>' width='100'>
+								<input type ="text" id="header" name="option[header]" value="<?php get_option('header','')?>" size="75">
+								<a href="#" class="button customaddmedia">Choisir une image</a>
+						</td></tr>
+						
+					</tbody>
+				</table>
+	</div>
+	
+	<?php 
+	
+}
+		
+	
+	
+	/////////////////fin reseau sociaux
+	
+	
+	
+	
+	
+	
 	
 /////// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
 if(is_admin()) 
@@ -160,7 +240,6 @@ function ImmoOpotions( )
 	register_setting( 'my_theme', 'image_logo');
 	register_setting( 'my_theme', 'image_banner');
 	register_setting( 'my_theme', 'background_menu'); // couleur background de menu
-	register_setting( 'my_theme', 'texte_menu'); // couleur background de menu
 }
 // la fonction myThemeAdminMenu( ) sera exécutée
 // quand WordPress mettra en place le menu d'admin
@@ -240,10 +319,6 @@ function VueOptionPage( )
 			<th scope="row"><label for="background_menu">Couleur de fond du menu</label></th>
 			<td><input type="text" id="background_menu" name="background_menu" class="background_menu" value="'.get_option( 'background_menu' ).'" /></td>
 		</tr>
-		<tr valign="top">
-			<th scope="row"><label for="texte_menu">Couleur de texte du menu</label></th>
-			<td><input type="text" id="texte_menu" name="texte_menu" class="texte_menu" value="'.get_option( 'texte_menu' ).'" /></td>
-		</tr>
 	</table>
 
 			<p class="submit">
@@ -251,7 +326,9 @@ function VueOptionPage( )
 			</p>
 		</form>
 	</div>';
-	}
+	
+	
+}
 ///// ajout au head
 
 add_action( 'wp_head', 'myThemeCss' );
@@ -267,7 +344,7 @@ function myThemeCss( )
         <?php
     }
 ?>
-	<?php if ((get_option('image_background') != '') || (get_option('background_color')!= '') ||(get_option('image_banner') != '')|| (get_option('background_color')!= '')|| (get_option('text_color') != '')|| (get_option('background_menu') != '') || (get_option('texte_menu') != '')) { ?>		
+	<?php if ((get_option('image_background') != '') || (get_option('background_color')!= '') ||(get_option('image_banner') != '')|| (get_option('background_color')!= '')|| (get_option('text_color') != '')|| (get_option('background_menu') != '')) { ?>		
 	<style type="text/css">
 		<?php if (get_option('image_background') != ''){ ?>
 		body, .banner {
@@ -300,14 +377,8 @@ function myThemeCss( )
 				
 					#menu{margin: 0 auto 0 auto; height:30px; width: 976px; background-color: <?php echo get_option( 'background_menu' ); ?>; border: 1px solid <?php echo get_option( 'background_menu' ); ?>; !important}
 					#menu ul{list-style:none; margin:0; padding:0; font:bold 12pt Arial, Helvetica, sans-serif;}
-					
+					#menu li{position:relative; display:block; float:left; margin-right:1px;}
 					#menu a{display:block; background-color: <?php echo get_option( 'background_menu' ); ?>; color:#eee; text-decoration:none; padding:0 10px; line-height:31px;}
-					
-		<?php } 
-		if (get_option('texte_menu') != ''){ ?>
-				
-					#menu li{color: <?php echo get_option( 'texte_menu' ); ?>; !important}
-					
 					
 		<?php } ?>
 	</style>
@@ -374,9 +445,8 @@ function switch_session() {
 	    $_SESSION[ 'post-order-by' ] = 'price';
 
     }
-add_action( 'pre_get_posts', 'switch_output_order' );
+//add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-
 	/*print_r($q);*/
 
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
@@ -423,7 +493,7 @@ function switch_output_order( $q ) {
 			}
 		}
 	}
-
+	
 	$q->set('meta_query',$first_array);
 	
       }
