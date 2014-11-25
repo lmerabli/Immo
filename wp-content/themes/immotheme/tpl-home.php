@@ -1,9 +1,8 @@
 <?php
-/*
-	Template Name: Statistiques
-*/
+    /**
+    * Template Name: Page d'accueil 
+    */
 ?>
-
 <?php get_header(); ?>
 
 <div class="page-encart">
@@ -11,16 +10,29 @@
 
 		<!-- Partie centrale -->
 		<div class="left-side-page">
-			<?php if (have_posts()) : ?>
-				<?php while (have_posts()) : the_post(); ?>
-					<div class="post">
-						<h1 class="post-title"><?php the_title(); ?></h1>
-						<div class="post-content">
-							<p>Contenu : <strong><?php echo the_content(); ?></strong></p>
-						</div>
+			<?php while (have_posts()) : the_post(); ?>
+				<div class="post">
+					<h1 class="post-title"><?php the_title(); ?></h1>
+					<div class="post-content">
+						<p><strong><?php the_content(); ?></strong></p>
 					</div>
-				<?php endwhile; ?>
-			<?php endif; ?>
+				</div>
+			<?php endwhile; ?>
+			<div>
+				<h1>Les dernières actualités</h1>
+			</div>
+
+			<div>
+				<?php
+					$query = new WP_query(array('post_type'=>'post','posts_per_page'=>4));
+					while($query->have_posts()): $query->the_post(); global $post;
+				?>
+				<div>
+					<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+					<?php the_content(); ?>
+				</div>
+			<?php endwhile; ?>
+			</div>
 		</div>
 
 		<!-- Colonne de droite -->
@@ -47,4 +59,3 @@
 		<?php get_footer(); ?>
 	</div>
 </div>
-

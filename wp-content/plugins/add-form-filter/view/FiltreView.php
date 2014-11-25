@@ -15,6 +15,8 @@ class FiltreView
 	public function getForm() {
 		$form = '<form method="post" action="#">';
 		
+		$form .= '<table>';
+		
 		$form .= '<input type="hidden" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'{query]" value="1" />';
 		
 		if ($this->filtre->hasFields()) {
@@ -26,7 +28,9 @@ class FiltreView
 			}
 		}
 		
-		$form .= '<input type="submit" value="Filtrer" />';
+		$form .= '<tr><td></td><td><input type="submit" value="Filtrer" /></td></tr>';
+		
+		$form .= '</table>';
 		
 		$form .= '</form>';
 		

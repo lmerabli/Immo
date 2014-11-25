@@ -26,6 +26,8 @@ class AddFormFilter
 		add_action('wp_ajax_drag_and_drop', array('AdministrationAjax', 'dragAndDrop'));
 		add_action('init', array($this, 'init'));
 		
+		add_action('widgets_init', function(){register_widget('AddFormFilterWidget');});
+		
 		$this->administrationView = new AdministrationView();
 		$this->shortcodeView = new ShortcodeView();
 		
