@@ -6,6 +6,7 @@
             'posts_per_page' => 0
             ) );
     query_posts( $args );*/
+
     if (have_posts()) : ?>
         <p class="title">
              Tout les biens immobiliers:
@@ -15,10 +16,10 @@
         <!--Boucle parcourant tout les articles-->
         <?php
 		
-        var_dump(query_posts( array (
+        query_posts( array (
             'post_type' => 'immo',
             'posts_per_page' => 0
-        	)));
+        	));
         
         while (have_posts()) : the_post(); ?>
             <!--Article-->

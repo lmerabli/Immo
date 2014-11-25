@@ -29,7 +29,7 @@ class AddFormFilterWidget extends WP_Widget
 	
 	public function switch_output_order( $q ) {
 		// Si on est en front et qu'il s'agit de la requête principale de la page d'archive
-    if( ! is_admin() && $q->is_main_query() ) {
+		if( ! is_admin() && $q->is_main_query() ) {
 			if (isset($_POST['add_form_filter'])){
 		    // $first_array['meta_query']=array();
 				$first_array['relation'] = 'AND';
