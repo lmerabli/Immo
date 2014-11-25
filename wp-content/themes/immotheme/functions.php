@@ -1,6 +1,6 @@
 <?php
 	//function temporaire
-	require 'exo_gael.php';
+	//require 'exo_gael.php';
 	
 	//script pour inclure les fichier css et js surement a completer
 	/*
@@ -11,6 +11,170 @@ function theme_name_scripts(){
 
 	}
 */
+/////////////// gael	
+	add_action('init', 'my_custom_init');
+
+	function my_custom_init(){
+		
+		register_post_type('immo', array(	'label' 			=> __('Immobiliers'),
+											'singular_label'	=> __('Immobilier'),
+											'public' 			=> true,
+											'show_ui' 			=> true,
+											'capability_type' 	=> 'post',
+											'hierarchical' 		=> false,
+											'rewrite' => array("slug" => "projects"),
+											'query_var' => "projets", // This goes to the WP_Query schema
+											'supports' 			=> array(	'title',
+																			'editor',
+																		)//ici le sujet qui m'interesse
+							
+											)
+		);
+		
+		register_taxonomy( 'surface', 'immo', array( 'hierarchical' => true, 'label' => 'Surface', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'prix', 'immo', array( 'hierarchical' => true, 'label' => 'Prix', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'cp', 'immo', array( 'hierarchical' => true, 'label' => 'Code Postale', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'ville', 'immo', array( 'hierarchical' => true, 'label' => 'Ville', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'nb_piece', 'immo', array( 'hierarchical' => true, 'label' => 'Nombre de pieces', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'nb_chambre', 'immo', array( 'hierarchical' => true, 'label' => 'Nombre de chambres', 'query_var' => true, 'rewrite' => true ) );
+		register_taxonomy( 'type_bien', 'immo', array( 'hierarchical' => true, 'label' => 'Type de Bien', 'query_var' => true, 'rewrite' => true ) );
+		
+
+	}
+
+	add_action('add_meta_boxes','init_metabox');
+	
+	function init_metabox(){
+		add_meta_box('info_bien', 'Informations sur bien', 'info_client', 'immo','normal');
+	}
+	
+	
+	function info_client($post){
+		$surface    = get_post_meta($post->ID,'_surface',true);
+		$prix   	= get_post_meta($post->ID,'_prix',true);
+		$cp 		= get_post_meta($post->ID,'_cp',true);
+		$ville 		= get_post_meta($post->ID,'_ville',true);
+		$nb_piece 	= get_post_meta($post->ID,'_nb_piece',true);
+		$nb_chambre = get_post_meta($post->ID,'_nb_chambre',true);
+		$type_bien 	= get_post_meta($post->ID,'_type_bien',true);
+		
+		$a_surface = array(	'name' => 'surface' 
+							,'value' => $surface
+							,'label' => 'Surface'
+							,'class' => 'label_admin'
+							,'br' => 1
+						);
+		
+		echo input_txt($a_surface);
+		
+		$a_prix = array(	'name' => 'prix' 
+							,'value' => $prix
+							,'label' => 'Prix'
+							,'class' => 'label_admin'
+							,'br' => 1
+						);
+		
+		echo input_txt($a_prix);
+		
+		$a_cp = array(	'name' => 'cp' 
+						,'value' => $cp
+						,'label' => 'Code postale'
+						,'class' => 'label_admin'
+						,'br' => 1
+					);
+		
+		echo input_txt($a_cp);
+		
+		$a_ville = array(	'name' => 'ville' 
+							,'value' => $ville
+							,'label' => 'Ville'
+							,'class' => 'label_admin'
+							,'br' => 1
+						);
+		
+		echo input_txt($a_ville);
+		
+		$a_piece = array(	'name' => 'nb_piece' 
+							,'value' => $nb_piece
+							,'label' => 'Nombre de pieces'
+							,'class' => 'label_admin'
+							,'br' => 1
+						);
+		
+		echo input_txt($a_piece);
+		
+		$a_chambre = array(	'name' => 'nb_chambre' 
+							,'value' => $nb_chambre
+							,'label' => 'Nombre de chambre'
+							,'class' => 'label_admin'
+							,'br' => 1
+						);
+		
+		echo input_txt($a_chambre);
+		
+		$a_type = array(	'name' => 'type_bien' 
+							,'value' => $type_bien
+							,'label' => 'Type de bien'
+							,'class' => 'label_admin'
+							,'br' => 1
+							,'a_select' => array(	0 => '*'
+												,1 => 'Maison / Villa'
+												,2 => 'Boutique'
+												,3 => 'Parking'
+												,4 => 'Loft/Atelier/Surface'
+												,5 => 'Hôtel particulier'
+												,6 => 'Appartement'
+												,7 => 'Local commercial'
+												,8 => 'Bureau'
+												,9 => 'Bâtiment'
+												,10 => 'Terrain'
+												,11 => 'Immeuble'
+												,12 => 'Divers'
+												,13 => 'Château'
+											)
+				);
+		
+		echo select_opt($a_type);		
+				
+	}
+	
+	add_action('save_post','save_metabox');
+	function save_metabox($post_id){
+		if(isset($_POST['surface'])){
+			update_post_meta($post_id, '_surface', sanitize_text_field($_POST['surface']));
+		}
+		if(isset($_POST['prix'])){
+			update_post_meta($post_id, '_prix', sanitize_text_field($_POST['prix']));
+		}
+		if(isset($_POST['cp'])){
+			update_post_meta($post_id, '_cp', sanitize_text_field($_POST['cp']));
+		}
+		if(isset($_POST['ville'])){
+			update_post_meta($post_id, '_ville', sanitize_text_field($_POST['ville']));
+		}
+		if(isset($_POST['nb_piece'])){
+			update_post_meta($post_id, '_nb_piece', sanitize_text_field($_POST['nb_piece']));
+		}
+		if(isset($_POST['nb_chambre'])){
+			update_post_meta($post_id, '_nb_chambre', sanitize_text_field($_POST['nb_chambre']));
+		}
+		if(isset($_POST['type_bien'])){
+			update_post_meta($post_id, '_type_bien', sanitize_text_field($_POST['type_bien']));
+		}
+	}
+	
+	
+	
+
+
+
+	
+	
+	
+	
+	
+	
+	/////////////////::: fin gael
 add_action("widgets_init", "theme_register_sidebars");
 
 
@@ -138,85 +302,7 @@ function theme_register_sidebars() {
         return $html;
 	}
 
-/////// reseau sociaux
-	
-	add_action('admin_menu','my_pannel');
 
-function my_pannel()
-{
-	add_menu_page
-	(
-		'Réseaux sociaux', 
-		'Réseaux sociaux', 
-		'activate_plugins',
-		'my_pannel',
-		'render_pannel'
-	
-	);
-}
-function render_pannel()
-{
-	wp_enqueue_media();
-	if(isset($_POST['pannel_update']))
-	{	
-		if(!wp_verify_nonce($_POST['pannel_noncename'],'my-pannel'))
-			die('Token non valide');
-		//var_dump($_POST);
-		foreach($_POST['option'] as $name=>$value)
-		{
-			if(empty($value))
-				delete_option($name);
-			else
-				update_option($name,$value);
-		}
-		?>
-		<!-- faire un message  dynamique -->
-		<div id="message" class="updated fade">
-			<p><strong> Bravo ! </strong> Options sauvegard�es avec succ�s </p>
-		</div>
-		<!-- faire un message  dynamique -->
-		<?php
-	}
-		
-	?>
-	<div class="wrap theme-options-page">
-		<div id="icon-option-general" class="icon32"> </div>
-		<h2> R�seaux Sociaux</h2>
-		<form action="" method="post">
-		
-			<div class="theme-option-group">
-				<table cellspacing=0 class="widefat options-table">
-					<thead>
-						<tr>
-							<th colspan="2"> Mes R�seaux sociaux </th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row"><label for="header">Header</label>
-						<th>
-						<td>
-								<image src='<?php get_option('header','')?>' width='100'>
-								<input type ="text" id="header" name="option[header]" value="<?php get_option('header','')?>" size="75">
-								<a href="#" class="button customaddmedia">Choisir une image</a>
-						</td></tr>
-						
-					</tbody>
-				</table>
-	</div>
-	
-	<?php 
-	
-}
-		
-	
-	
-	/////////////////fin reseau sociaux
-	
-	
-	
-	
-	
 	
 	
 /////// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
@@ -387,7 +473,7 @@ function myThemeCss( )
 }
 
 
-//////////////////// filtre lio
+//////////////////// filtre 
 
 add_shortcode('notre_shortcode', 'fL_formulaire');
 function fL_formulaire($select="")
