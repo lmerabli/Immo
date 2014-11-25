@@ -24,7 +24,7 @@
 
 			<div>
 				<?php
-					$query = new WP_query(array('post_type'=>'post','posts_per_page'=>4));
+					$query = new WP_query(array('post_type'=>'Immo','posts_per_page'=>4));
 					while($query->have_posts()): $query->the_post(); global $post;
 				?>
 				<div>
