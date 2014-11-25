@@ -10,7 +10,7 @@
 	<div class="page-view">
 
 		<!-- Partie centrale -->
-		<div class="left-side-page">
+		<div class="left-side-page body">
 			<?php if (have_posts()) : ?>
 				<?php while (have_posts()) : the_post(); ?>
 					<div class="post">
@@ -24,7 +24,7 @@
 		</div>
 
 		<!-- Colonne de droite -->
-		<div class="right-side-page">
+		<div class="right-side-page side">
 			<div class="login-box">
 				<!--SI L'UTILISATEUR EST CONNECTE-->
 				<?php if( is_user_logged_in() ): ?>

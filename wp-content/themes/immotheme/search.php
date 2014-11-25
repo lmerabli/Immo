@@ -8,7 +8,7 @@
     <div class="search-view">
 
         <!-- Partie centrale-->
-        <div class="search-content">
+        <div class="search-content body">
             <!-- Si des éléments sont existants-->
             <?php if ( have_posts() ) : ?>
 
@@ -60,7 +60,7 @@
         </div>
 
         <!-- Colonne de droite -->
-        <div class="sidebar-search">
+        <div class="sidebar-search side">
             <div class="login-box">
                 <!--SI L'UTILISATEUR EST CONNECTE-->
                 <?php if( is_user_logged_in() ): ?>
