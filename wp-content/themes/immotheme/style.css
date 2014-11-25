@@ -8,41 +8,29 @@ Tags: immo, esgi
 
 */
 
-html{font-family: Arial;}
+@font-face{
+    font-family: "MankSansMed";
+    src: url('./fonts/MankSans-Medium.ttf');
+}
 
+html{font-family: Arial;}
+h1, h2, h3{font-family: "MankSansMed", Arial; font-weight: bold;}
 body{margin: 0px;}
 
-.banner{height: 50px;color: red;
+.banner{height: 200px;color: #fff;
 	background:-webkit-gradient(linear,left top,left bottom,from(#F0F8FF),to(#C0C0C0));
 	background:   -moz-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:    -ms-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:     -o-linear-gradient( to top, #F0F8FF, #C0C0C0);
 	background:        linear-gradient( to top, #F0F8FF, #C0C0C0);}
-    #banner-text{width: 976px; border: 1px solid black; display: flex; margin: 0 auto 0 auto;}
-    #banner-text h1{font-size: 2.5em; margin: 0 0 0 20px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
-    #banner-text p{margin: 0 0 0 10px; height:50px!important; line-height:50px!important; text-align:center; /* centrage horizontal */}
+    #banner-text{width: 976px; height: 100%; border: 1px solid black; display: flex; text-align:center; margin: 0 auto 0 auto; background: url(./images/logo.png); color: white!important;}
+        #banner-text .text-bloc{margin:0 10px; display:inline-block; text-align:left; line-height: 200px}
+        #banner-text .website-name{font-size: 7em;}
+        #banner-text .website-slogan{font-size: 3em;}
 
 /*.menu{border: 1px solid blue; width: 976px; margin: 0 auto 0 auto;}
     .menu ul{list-style-type: none; padding-left: 20px;}
     .menu .page_item a{text-transform : uppercase; font-weight: bold; text-decoration: none;}*/
-
-/* PARTIE CENTRALE - CONTENT */ 
-.encart{width:976px; margin: 0 auto;}
-.content{width: 100%; display: flex; margin: 0 auto 0 auto;}
-    .post .post-title a, .post .post-info a{text-decoration: none; color: black;}
-    .post .post-info a{font-weight: bold;}
-    .post .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
-    .post-content p img{max-width: 150px; height: auto;}
-
-    .body{border: 1px solid red; width: 70.6%; padding: 20px;}
-
-    .side{border: 1px solid green; width: 29.4%;}
-        .connect-box{border: 1px solid black;}
-
-        #sidebar ul{list-style-type: none; color: red; font-size: 11px;}
-        #sidebar a{text-decoration: none; color: black;}
-        #sidebar h2{line-height: 1px;}
-
 
 /* MENU PERSONALISABLE */
  
@@ -66,6 +54,61 @@ body{margin: 0px;}
                 #menu ul li.current-menu-ancestor > a,
                 #menu ul li.current-menu-item > a,
                 #menu ul li.current-menu-parent > a{background-color:#555;}
+
+
+/* ###### PARTIE CENTRALE - LOOP ###### */ 
+.encart{width:976px; margin: 0 auto;}
+    .content{width: 100%; display: inline-flex; margin: 0 auto 0 auto;}
+        
+        /* Loop partie centrale*/
+        .body{border: 1px solid red; width: 70.6%; padding: 20px;}
+            /*titre du loop*/
+            .title{font-size: 35px; margin: 0px;}
+            /*Articles*/
+                .post .post-title{margin-bottom: 0px;}
+                    .post-title a, .post .post-info a{text-decoration: none; color: black;}
+                    
+                .post .post-info{margin-top: 0px; font-style: italic;}
+                    .post-info a{font-weight: bold;}
+
+                    .post-meta{list-style-type: none; padding-left: 10px; padding-top: 2px;}
+                    .post-content p img{max-width: 150px; height: auto;}
+    
+    /* Partie latérale*/
+    .side{border: 1px solid green; width: 29.4%; background-color: #F00;}
+        .login-box{background-color: #F00;}
+                .welcome_user{color: white;}
+                    .welcome_user a{text-decoration:none; font-weight: bold; color: white;}
+
+                .disconnect_user{text-decoration:none; color: white}
+
+        #sidebar ul{list-style-type: none; font-size: 11px;}
+        #sidebar a{text-decoration: none; color: black;}
+        #sidebar h2{line-height: 1px;}
+
+/* ###### TEMPLATE PAGE ###### */
+.page-encart{width:976px; margin: 0 auto;}
+    .page-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .left-side-page{border: 1px solid blue; width: 70.6%;}
+        .right-side-page{background-color: #F00; border: 1px solid green; width: 29.4%;}
+
+/* ###### TEMPLATE SINGLE ###### */
+.single-post-encart{width:976px; margin: 0 auto;}
+    .single-post-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .site-content{border: 1px solid blue; width: 70.6%;}
+        .sidebar-single-post{background-color: #F00; border: 1px solid green; width: 29.4%;}
+
+/* ###### TEMPLATE SEARCH ###### */
+.search-encart{width:976px; margin: 0 auto;}
+    .search-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
+        .search-content{border: 1px solid blue; width: 70.6%;}
+            #search-post{color: black;}
+                    .search-entry-title a{text-decoration: underline; color: black;}
+
+        .sidebar-search{background-color: #F00; border: 1px solid green; width: 29.4%;}
+
+
+
 
 /* =WordPress Core
 -------------------------------------------------------------- */

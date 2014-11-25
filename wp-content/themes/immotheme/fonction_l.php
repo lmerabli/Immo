@@ -11,12 +11,12 @@ add_action('admin_menu','mythemeAdminMenu');
 function mythemeAdminMenu()
 {
     add_menu_page(
-        'option de min thème',
-        'Mon thème',
+        'option de min thï¿½me',
+        'Mon thï¿½me',
         'administrator',
         'my-theme-page',
-        'myThemeSettingsPage',
-    )
+        'myThemeSettingsPage'
+    );
 }
 
 function myThemeSettingsPage()
@@ -25,20 +25,20 @@ function myThemeSettingsPage()
 }
 
 
-//////////////////faire un menu réseau sociaux///////////////////
+//////////////////faire un menu rï¿½seau sociaux///////////////////
 add_action('admin_menu','my_pannel');
 
 function my_pannel()
 {
 	add_menu_page
 	(
-		'Réseaux sociaux', 
-		'Réseaux sociaux', 
+		'Rï¿½seaux sociaux', 
+		'Rï¿½seaux sociaux', 
 		'activate_plugins',
 		'my_pannel',
-		'render_pannel',
+		'render_pannel'
 	
-	)
+	);
 }
 function render_pannel()
 {
@@ -58,7 +58,7 @@ function render_pannel()
 		?>
 		<!-- faire un message  dynamique -->
 		<div id="message" class="updated fade">
-			<p><strong> Bravo ! </strong> Options sauvegardées avec succès </p>
+			<p><strong> Bravo ! </strong> Options sauvegardï¿½es avec succï¿½s </p>
 		</div>
 		<!-- faire un message  dynamique -->
 		<?php
@@ -67,14 +67,14 @@ function render_pannel()
 	?>
 	<div class="wrap theme-options-page">
 		<div id="icon-option-general" class="icon32"> </div>
-		<h2> Réseaux Sociaux</h2>
+		<h2> Rï¿½seaux Sociaux</h2>
 		<form action="" method="post">
 		
 			<div class="theme-option-group">
 				<table cellspacing=0 class="widefat options-table">
 					<thead>
 						<tr>
-							<th> Mes Réseaux sociaux </th>
+							<th> Mes Rï¿½seaux sociaux </th>
 						</tr>
 					</thead>
 					<tbody>
