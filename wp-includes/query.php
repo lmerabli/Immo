@@ -747,7 +747,7 @@ function is_main_query() {
  */
 function have_posts() {
 	global $wp_query;
-
+	
 	return $wp_query->have_posts();
 }
 
