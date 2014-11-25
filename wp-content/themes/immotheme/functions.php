@@ -445,7 +445,7 @@ function switch_session() {
 	    $_SESSION[ 'post-order-by' ] = 'price';
 
     }
-//add_action( 'pre_get_posts', 'switch_output_order' );
+add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
 	/*print_r($q);*/
 

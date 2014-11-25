@@ -17,7 +17,7 @@ class FiltreView
 		
 		$form .= '<table>';
 		
-		$form .= '<input type="hidden" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'{query]" value="1" />';
+		$form .= '<input type="hidden" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'[query]" value="1" />';
 		
 		if ($this->filtre->hasFields()) {
 			$fields = $this->filtre->getFields();
