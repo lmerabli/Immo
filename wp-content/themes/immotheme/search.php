@@ -11,7 +11,7 @@
         <div class="search-content body">
 		<?php 
 				//print_r($_SESSION);
-				 echo fL_formulaire()
+				 /*echo fL_formulaire()*/
 				?>
             <!-- Si des éléments sont existants-->
             <?php if ( have_posts() ) : ?>
