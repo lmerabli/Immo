@@ -12,8 +12,10 @@ function theme_name_scripts(){
 	}
 */
 /////////////// gael	
+	//fonction qui appel my_custom_init lors de l'initialisation
 	add_action('init', 'my_custom_init');
 
+	//fonction qui creer un nouveau type de post "immo"
 	function my_custom_init(){
 		
 		register_post_type('immo', array(	'label' 			=> __('Immobiliers'),
@@ -31,6 +33,7 @@ function theme_name_scripts(){
 											)
 		);
 		
+		//creation des taxonomie pour chaque champs personnalisé
 		register_taxonomy( 'surface', 'immo', array( 'hierarchical' => true, 'label' => 'Surface', 'query_var' => true, 'rewrite' => true ) );
 		register_taxonomy( 'prix', 'immo', array( 'hierarchical' => true, 'label' => 'Prix', 'query_var' => true, 'rewrite' => true ) );
 		register_taxonomy( 'cp', 'immo', array( 'hierarchical' => true, 'label' => 'Code Postale', 'query_var' => true, 'rewrite' => true ) );
@@ -42,13 +45,15 @@ function theme_name_scripts(){
 
 	}
 
+	//appel la fonction init_metabox lors du chargement des metabox
 	add_action('add_meta_boxes','init_metabox');
 	
+	//fonction qui ajout des champs personalisé de info_client dans le type de post "immo"
 	function init_metabox(){
 		add_meta_box('info_bien', 'Informations sur bien', 'info_client', 'immo','normal');
 	}
 	
-	
+	//fonction qui creer les champs personnalisé
 	function info_client($post){
 		$surface    = get_post_meta($post->ID,'_surface',true);
 		$prix   	= get_post_meta($post->ID,'_prix',true);
@@ -138,6 +143,7 @@ function theme_name_scripts(){
 				
 	}
 	
+	//fonction qui gere les sauvegarde des champ personnalisé
 	add_action('save_post','save_metabox');
 	function save_metabox($post_id){
 		if(isset($_POST['surface'])){
