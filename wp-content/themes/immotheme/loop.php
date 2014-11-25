@@ -14,11 +14,26 @@
 
         <!--Boucle parcourant tout les articles-->
         <?php 
-
+		$metaQuery = array();
+		
+		if (isset($_POST['add_form_filter'])) {
+			if (count($_POST['add_form_filter']) > 1)	$metaQuery['relation'] = 'AND';
+			
+			foreach ($_POST['add_form_filter'] as $metaKey => $value) {
+				if (!empty($value)) {
+					$metaQuery[] = array(
+						'key'     => $metaKey,
+						'value'   => $value,
+						'compare' => 'LIKE'
+					);
+				}
+			}
+		}
+		
         query_posts( array (
             'post_type' => 'immo',
-            'posts_per_page' => 0
-            ) );
+            'posts_per_page' => 0,
+        	'meta_query' => $metaQuery));
 
         while (have_posts()) : the_post(); ?>
             <!--Article-->
