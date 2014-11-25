@@ -24,6 +24,7 @@ class AddFormFilter
 		
 		add_action('admin_enqueue_scripts', array($this, 'includeScripts'));
 		add_action('wp_ajax_drag_and_drop', array('AdministrationAjax', 'dragAndDrop'));
+		add_action('wp_ajax_delete_item_list', array('AdministrationAjax', 'deleteItemList'));
 		add_action('init', array($this, 'init'));
 		
 		add_action('widgets_init', function(){register_widget('AddFormFilterWidget');});

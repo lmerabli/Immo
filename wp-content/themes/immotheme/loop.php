@@ -24,7 +24,7 @@
 					$metaQuery[] = array(
 						'key'     => $metaKey,
 						'value'   => $value,
-						'compare' => '=='
+						'compare' => 'LIKE'
 					);
 				}
 			}

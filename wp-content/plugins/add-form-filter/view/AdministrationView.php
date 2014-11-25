@@ -99,7 +99,7 @@ class AdministrationView
 					
 				break;
 			case "2":
-				$metaKeys = $wpdb->get_results("SELECT * FROM `wp_postmeta` WHERE meta_key REGEXP \"^[^_]\";");
+				$metaKeys = $wpdb->get_results("SELECT * FROM `wp_postmeta`");
 				
 				echo '<h1>'.get_admin_page_title().'</h1>
 					  <h2>Ajout d\'un champ (2 / 2)</h2>';
@@ -226,8 +226,21 @@ class AdministrationView
 					
 					$html .= '
 					<tr id="list_items_'.$id.'" class="list_item">
-					<td>'.$champ->getValueHtml().'</td>
+					<td>'.$champ->getValueHtml().'</td> <td><input type="button" name="list_delete_item_'.$id.'" id="list_delete_item_'.$id.'" value="-" /></td>
 					</tr>';
+					
+					$html .= '<script>
+						jQuery(document).ready(function($) {
+							$("#list_delete_item_'.$id.'").click(function() {
+								$(\'#list_items_'.$id.'\').remove();
+								
+								var order = "action=delete_item_list&id='.$id.'&delete_drag_and_drop=0";
+								$.post(ajaxurl, order, function(response) {
+									// success
+								});
+							});
+						});
+					</script>';
 				}
 			} else {
 				for ($i=0; $i<count($_SESSION['add_form_filter']['drag_and_drop_list_items']); $i++) {
@@ -242,8 +255,21 @@ class AdministrationView
 						
 					$html .= '
 					<tr id="list_items_'.$id.'" class="list_item">
-					<td>'.$champ->getValueHtml().'</td>
+					<td>'.$champ->getValueHtml().'</td> <td><input type="button" name="list_delete_item_'.$id.'" id="list_delete_item_'.$id.'" value="-" /></td>
 					</tr>';
+					
+					$html .= '<script>
+						jQuery(document).ready(function($) {
+							$("#list_delete_item_'.$id.'").click(function() {
+								$(\'#list_items_'.$id.'\').remove();
+								
+								var order = "action=delete_item_list&id='.$id.'&delete_drag_and_drop=1";
+								$.post(ajaxurl, order, function(response) {
+									// success
+								});
+							});
+						});
+					</script>';
 				}
 			}
 		}
