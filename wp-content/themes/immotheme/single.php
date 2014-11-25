@@ -1,6 +1,14 @@
+<?php
+/*
+	Template Name: Single_post
+*/
+?>
+
 <?php get_header(); ?>
 <div class="single-post-encart">
 	<div class="single-post-view">
+
+		<!-- Partie centrale -->
 		<div id="primary" class="site-content">
 			<div id="content" role="main">
 
@@ -19,6 +27,16 @@
 	        			<p class="single-post-info">
 	          				Posté le <?php the_date(); ?> dans <?php the_category(', '); ?> par <?php the_author(); ?>.
 	        			</p>
+	        			<div class="single-post-meta">
+	        				<?php echo "<ul class='post-meta'>";
+								foreach(get_post_custom() as $cle => $array_value)
+								{
+									if($cle != "_edit_lock" && $cle != "_edit_last")
+										echo "<li><span class='post-meta-key'>".  str_replace("_", " ", $cle).":</span>&nbsp". $array_value[0]."</li>";
+								}
+								echo "</ul>"; 
+							?>
+	        			</div>
 	        			<div class="single-post-content">
 	          				<?php the_content(); ?>
 	        			</div>
@@ -27,10 +45,12 @@
 	        			</div>
 	      			</div>
 
-				<?php endwhile; // end of the loop. ?>
+				<?php endwhile;?>
 
-			</div><!-- #content -->
-		</div><!-- #primary -->
+			</div>
+		</div>
+
+		<!-- Colonne de droite -->
 		<div class="sidebar-single-post">
 			<div class="login-box">
 				<!--SI L'UTILISATEUR EST CONNECTE-->
@@ -50,6 +70,7 @@
 
 			<?php get_sidebar(); ?>
 		</div>
+
 	</div>
 	<?php get_footer(); ?>
 </div>

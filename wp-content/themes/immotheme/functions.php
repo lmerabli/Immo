@@ -410,10 +410,12 @@ function fL_formulaire($select="")
 //			    <option value="DESC"'.selected( $current_order, 'DESC' ).'>Décroissant</option>
 //			    <option value="ASC"'.selected( $current_order, 'ASC' ).'>Croissant</option>
 //			</select></p>';
-		$html.='<label for="3dbd9a2388bf81ba0bad37d777aff572">Prix</label> <input type="text" id="3dbd9a2388bf81ba0bad37d777aff572" name="3dbd9a2388bf81ba0bad37d777aff572" value="" />
-			<label for="f04fb51d518fd323411b4593193d9031">Date</label> <input type="text" id="f04fb51d518fd323411b4593193d9031" name="add_form_filter[date]" class="datepicker" value="" />
-		<label for="df51cccbacbaf45d76e1a785f145fd03">Date_fin</label> <input type="text" id="df51cccbacbaf45d76e1a785f145fd03" name="add_form_filter[date]" class="datepicker" value="" />
-		<input type="submit" value="Filtrer" />';
+		$html.='<label for="c52e22404e0df08b420af080ce558d6a">Prix min: </label> <input type="text" id="c52e22404e0df08b420af080ce558d6a" name="add_form_filter[prix][]" value="" />'
+			. '<label for="c52e22404e0df08b420af080ce558d6a">Prix max: </label> <input type="text" id="c52e22404e0df08b420af080ce558d6a" name="add_form_filter[prix][]" value="" />'
+			. '<label for="6c7927b138d292985b7e1dae123da288">ville: </label> <input type="text" id="6c7927b138d292985b7e1dae123da288" name="add_form_filter[ville][]" value="" />';
+			$html.='<label for="f04fb51d518fd323411b4593193d9031">Surface min</label> <input type="text" id="f04fb51d518fd323411b4593193d9031" name="add_form_filter[surface][]" class="datepicker" value="" />
+		<label for="df51cccbacbaf45d76e1a785f145fd03">Surface max</label> <input type="text" id="df51cccbacbaf45d76e1a785f145fd03" name="add_form_filter[surface][]" class="datepicker" value="" />';
+		$html.='<input type="submit" value="Filtrer" />';
 	}
 
 	$html.="</form>";
@@ -446,22 +448,60 @@ function switch_session() {
     }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-	echo "<pre>";
-	print_r($_POST);
-	echo "</pre>";
+
+	/*print_r($q);*/
+
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
     if( ! is_admin() && $q->is_main_query() ) {
       if (isset($_POST['add_form_filter'])){
-	/*foreach( $_POST['add_form_filter']as $metakey  => $value)
+	     // $first_array['meta_query']=array();
+	      $first_array['relation'] = 'AND';
+	      $cpt=0;
+	foreach( $_POST['add_form_filter']as $metakey  => $value)
         {
-            $q->set( 'meta_key', $metakey);
-            $q->set('meta_value',$value);
-        }*/
-	      if(array_key_exists('_date', $_POST['add_form_filter'])){
-		      
-	      }
-	      else
-		$q->set('meta_query',$_POST['add_form_filter']);
+		if(!empty($value)){
+			
+			if(gettype($value)=="array")
+			{
+				if(!empty($value[0]))
+				{
+					$new_array_value =array();
+					foreach ($value as  $val) {
+						if(!empty($val))
+							$new_array_value[]=$val;
+					}
+					if(count($value)==2 && !empty($value[0]) && !empty($value[1]))
+					{
+						$first_array[$cpt]['key']= '_'.$metakey;
+						$first_array[$cpt]['value']= $new_array_value;
+						$first_array[$cpt]['type']  = 'numeric';
+						$first_array[$cpt]['compare']='BETWEEN';
+						//$q->set( 'meta_query',array($array));
+					}
+					else
+					{
+						$first_array[$cpt]['key']= '_'.$metakey;
+						$first_array[$cpt]['value']= $new_array_value;
+						$first_array[$cpt]['compare']='IN';
+						//$q->set( 'meta_query',array($array));
+					}
+					$cpt++;
+				}
+			}
+			else
+			{
+				$q->set( 'meta_key', '_'.$metakey);
+				$q->set('meta_value',$value);
+			}
+		}
+	}
+	//$first_array['meta_query']=$array;
+	$q->set('meta_query',$first_array);
+	//	  if(array_key_exists('_date', $_POST['add_form_filter'])){
+	//		      
+	//	  }
+	//	  else
+		//$q->set('meta_query',$_POST['add_form_filter']);
 	     
         /* 
         * Par défaut, WordPress tri par date, donc il n'y a pas besoin d'effectuer'
