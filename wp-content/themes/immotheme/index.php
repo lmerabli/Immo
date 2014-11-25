@@ -7,10 +7,7 @@
 
 			<!--COLONNE GAUCHE-->
 			<div class="body">
-				<?php 
-				//print_r($_SESSION);
-				 echo fL_formulaire()
-				?>
+				
 				<?php get_template_part( 'loop', 'index' ); ?>
 			</div>
 

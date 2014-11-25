@@ -10,8 +10,8 @@
         <!-- Partie centrale-->
         <div class="search-content body">
 		<?php 
-				//print_r($_SESSION);
-				 echo fL_formulaire()
+//				//print_r($_SESSION);
+//				 echo fL_formulaire()
 				?>
             <!-- Si des éléments sont existants-->
             <?php if ( have_posts() ) : ?>
