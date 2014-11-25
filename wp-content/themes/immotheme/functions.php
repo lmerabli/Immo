@@ -436,9 +436,8 @@ function switch_session() {
 	    $_SESSION[ 'post-order-by' ] = 'price';
 
     }
-add_action( 'pre_get_posts', 'switch_output_order' );
+//add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-
 	/*print_r($q);*/
 
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
@@ -485,7 +484,7 @@ function switch_output_order( $q ) {
 			}
 		}
 	}
-
+	
 	$q->set('meta_query',$first_array);
 	
       }
