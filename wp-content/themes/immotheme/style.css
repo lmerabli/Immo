@@ -102,6 +102,9 @@ body{margin: 0px;}
 .search-encart{width:976px; margin: 0 auto;}
     .search-view{width: 100%; display: inline-flex; margin: 0 auto 0 auto; border: 1px solid red;}
         .search-content{border: 1px solid blue; width: 70.6%;}
+            #search-post{color: black;}
+                    .search-entry-title a{text-decoration: underline; color: black;}
+
         .sidebar-search{background-color: #F00; border: 1px solid green; width: 29.4%;}
 
 

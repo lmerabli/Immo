@@ -9,31 +9,54 @@
 
         <!-- Partie centrale-->
         <div class="search-content">
-            <div class="search-content-head">
-                <h1 class="search-title"><?php printf(__('Résultat de votre recherche: %s', 'infoway'), '' . get_search_query() . ''); ?></h1>
-            </div>
-            <div class="search-encart-post">
-                <?php if (have_posts()) : ?>
-                    <?php get_template_part('loop', 'search'); ?>
+            <!-- Si des éléments sont existants-->
+            <?php if ( have_posts() ) : ?>
 
+                <!-- Titre du contenu -->
+                <h1 class="search-page-title">
+                    <?php _e( 'Résultat pour la recherche: ', 'Immo' ); ?>
+                    <span>
+                        <?php the_search_query(); ?>
+                    </span>
+                </h1>
+                                        
+                <!-- Boucle des posts -->
+                <?php while ( have_posts() ) : the_post() ?>
+                    <div id="search-post">
+
+                        <!-- Titre de l'élément -->
+                        <h2 class="search-entry-title">
+                            <a href="<?php the_permalink(); ?>">
+                                <?php the_title(); ?>
+                            </a>
+                        </h2>
+                        
+                        <!-- Résumé de l'article -->
+                        <div class="search-entry-summary"> 
+                            <?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'Immo' )  ); ?>
+                            <?php wp_link_pages('before=<div class="page-link">' . __( 'Pages:', 'Immo' ) . '&after=</div>') ?>
+                        </div>          
+                    </div>
+                <?php endwhile; ?>
+                <?php global $wp_query; $total_pages = $wp_query->max_num_pages; if ( $total_pages > 1 ) { ?>
+                    <div id="nav-below" class="navigation">
+                        <div class="nav-previous"><?php next_posts_link(__( '<span class="meta-nav">&laquo;</span> Older posts', 'Immo' )) ?></div>
+                        <div class="nav-next"><?php previous_posts_link(__( 'Newer posts <span class="meta-nav">&raquo;</span>', 'Immo' )) ?></div>
+                    </div>
+                <?php } ?>          
                 <?php else : ?>
-                    <article id="post-0" class="post no-results not-found">
-                        <header class="entry-header">
-                            <h1 class="entry-title">
-                                <?php _e('Aucun résultat', 'infoway'); ?>
-                            </h1>
-                        </header>
-
+                    <div id="post-0" class="post no-results not-found">
+                        <h2 class="entry-title">
+                            <?php _e( 'Aucun résultat trouvé', 'your-theme' ) ?>
+                        </h2>
                         <div class="entry-content">
                             <p>
-                                <?php _e('Aucun résultat de correspond à votre recherche. Nous vous invitons à effectuer une recherche avec des mots-clés différents', 'infoway'); ?>
+                                <?php _e( 'Aucun critère ne correspond à votre recherche. Nous vous invitons à faire une recherche avec des mot clé différents', 'Immo' ); ?>
                             </p>
-                            <?php get_search_form(); ?>
+                            <?php get_search_form(); ?>                     
                         </div>
-
-                    </article>
-                <?php endif; ?>
-            </div>
+                    </div>
+            <?php endif; ?>
         </div>
 
         <!-- Colonne de droite -->
