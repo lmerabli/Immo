@@ -38,9 +38,27 @@ class Filtre {
 	
 	public function save() {
 		if ($this->id > 0) {
-			$this->update();
+			$ok = $this->update();
 		} else {
-			$this->insert();
+			$ok = $this->insert();
+		}
+		
+		if ($ok && $this->isActif()) {
+			global $wpdb;
+			
+			$wpdb->query(
+					$wpdb->prepare(
+							"UPDATE ".AddFormFilter::DATABASE_PREFIX.AddFormFilter::TABLE_NAME_FILTER." SET is_actif = %d;"
+							, 0
+					)
+			);
+			
+			$wpdb->query(
+					$wpdb->prepare(
+							"UPDATE ".AddFormFilter::DATABASE_PREFIX.AddFormFilter::TABLE_NAME_FILTER." SET is_actif = %d WHERE id = %d;"
+							, 1, $this->id
+					)
+			);
 		}
 	}
 	
@@ -55,6 +73,8 @@ class Filtre {
 						, $this->id
 				)
 		);
+		
+		return true;
 	}
 	
 	/**
@@ -151,6 +171,8 @@ class Filtre {
 				$field->save();
 			}
 		}
+		
+		return true;
 	}
 	
 	private function update() {
@@ -181,6 +203,8 @@ class Filtre {
 				$field->save();
 			}
 		}
+		
+		return true;
 	}
 	
 	private function checkId() {

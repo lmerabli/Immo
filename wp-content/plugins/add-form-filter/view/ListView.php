@@ -71,14 +71,22 @@ class ListView extends WP_List_Table
 		
 		foreach ($filtres as $filtre) {
 			$actif = 'Non';
-			if ($filtre['is_actif'] > 0) $actif = 'Oui';
+			$actions = sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>',$_REQUEST['page'],'edit',$filtre['id']).' '.
+					   sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>',$_REQUEST['page'],'delete',$filtre['id']);
+			
+			if ($filtre['is_actif'] > 0) {
+				$actif = 'Oui';
+			} else {
+				$actions .= ' '.sprintf('<a href="?page=%s&action=%s&id=%s">Actif</a>',$_REQUEST['page'],'is_actif',$filtre['id']);
+			}
+			
+			
 			
 			$data[] = array(
 					'id'		=> $filtre['id'],
 					'name'		=> $filtre['name'],
 					'is_actif'	=> $actif,
-					'actions'	=> sprintf('<a href="?page=%s&action=%s&id=%s">Edit</a>',$_REQUEST['page'],'edit',$filtre['id']).' '.
-								   sprintf('<a href="?page=%s&action=%s&id=%s">Delete</a>',$_REQUEST['page'],'delete',$filtre['id'])
+					'actions'	=> $actions
 			);
 		}
 		
