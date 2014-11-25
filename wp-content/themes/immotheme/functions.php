@@ -447,7 +447,9 @@ function switch_session() {
     }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-	/*print_r($q);*/
+//	echo "<pre>";
+//	print_r($q);
+//	echo "</pre>";
 
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
     if( ! is_admin() && $q->is_main_query() ) {
