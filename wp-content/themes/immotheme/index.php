@@ -32,9 +32,6 @@
 					<?php endif; ?>
 				</div>
 
-				<!-- FORMULAIRE DE RECHERCHE -->
-				<?php get_search_form(); ?>
-
 				<!-- BARRE LATERALE -->
 				<?php get_sidebar(); ?>
 			</div>

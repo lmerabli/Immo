@@ -35,6 +35,18 @@
                             </a>
                         </h2>
                         
+                        <!-- Champs personnalisés -->
+                        <div class="single-post-meta">
+                            <?php echo "<ul class='post-meta'>";
+                                foreach(get_post_custom() as $cle => $array_value)
+                                {
+                                    if($cle != "_edit_lock" && $cle != "_edit_last")
+                                        echo "<li><span class='post-meta-key'>".  str_replace("_", " ", $cle).":</span>&nbsp". $array_value[0]."</li>";
+                                }
+                                echo "</ul>"; 
+                            ?>
+                        </div>
+
                         <!-- Résumé de l'article -->
                         <div class="search-entry-summary"> 
                             <?php the_excerpt( __( 'Continue reading <span class="meta-nav">&raquo;</span>', 'Immo' )  ); ?>
