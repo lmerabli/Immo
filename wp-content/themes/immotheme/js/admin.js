@@ -22,6 +22,14 @@
 		})
 		.open();
 	})
+	$('#background_color, #text_color, #background_menu').click(function(e){
+		var id = e.target.id;
+		console.log(id);
+	$(function() {
+				$('.background_color, .text_color, .background_menu').wpColorPicker();		
+			});
+   });
+	
    })
 })(jQuery);
 
