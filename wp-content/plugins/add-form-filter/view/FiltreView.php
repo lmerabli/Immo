@@ -13,7 +13,7 @@ class FiltreView
 	}
 	
 	public function getForm() {
-		$form = '<form method="post" action="">';
+		$form = '<form method="post" action="?s=">';
 		
 		$form .= '<table>';
 		

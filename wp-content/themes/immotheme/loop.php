@@ -6,7 +6,7 @@
             'posts_per_page' => 0
             ) );
     query_posts( $args );*/
-
+	
     if (have_posts()) : ?>
         <p class="title">
              Tout les biens immobiliers:
