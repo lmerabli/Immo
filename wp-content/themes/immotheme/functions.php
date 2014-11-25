@@ -139,10 +139,7 @@ function theme_register_sidebars() {
 	}
 
 /////// reseau sociaux
-	if(is_admin()) 
-	{
-		wp_enqueue_script('costumadminjs',  get_template_directory_uri().'/js/admin.js');
-	}
+	
 	add_action('admin_menu','my_pannel');
 
 function my_pannel()
@@ -222,8 +219,16 @@ function render_pannel()
 	
 	
 	
-	/////// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
-	register_nav_menus(array( 'header' => 'Menu principal (header)'));
+/////// Ajout de la fonction permettant de personnaliser son menu via le panel admin de Wordpress
+if(is_admin()) 
+{
+	wp_enqueue_style('wp-color-picker');
+	wp_enqueue_script('costumadminjs',  get_template_directory_uri().'/js/admin.js');
+	wp_enqueue_script( 'wp-color-picker');
+
+
+}
+register_nav_menus(array( 'header' => 'Menu principal (header)'));
 ///ajout bdd option 	
 add_action( 'admin_init', 'ImmoOpotions' );
 
@@ -234,6 +239,7 @@ function ImmoOpotions( )
 	register_setting( 'my_theme', 'image_background');
 	register_setting( 'my_theme', 'image_logo');
 	register_setting( 'my_theme', 'image_banner');
+	register_setting( 'my_theme', 'background_menu'); // couleur background de menu
 }
 // la fonction myThemeAdminMenu( ) sera exécutée
 // quand WordPress mettra en place le menu d'admin
@@ -302,12 +308,16 @@ function VueOptionPage( )
 		</tr>
 		<tr valign="top">
 			<th scope="row"><label for="background_color">Couleur de fond de la zone widget</label></th>
-			<td><input type="text" id="background_color" name="background_color" class="small-text" value="'.get_option( 'background_color' ).'" /></td>
+			<td><input type="text" id="background_color" name="background_color" class="background_color" value="'.get_option( 'background_color' ).'" /></td>
 		</tr>
 
 		<tr valign="top">
 			<th scope="row"><label for="text_color">Couleur du texte de la zone widget</label></th>
-			<td><input type="text" id="text_color" name="text_color" class="small-text" value="'.get_option( 'text_color' ).'" /></td>
+			<td><input type="text" id="text_color" name="text_color" class="text_color" value="'.get_option( 'text_color' ).'" /></td>
+		</tr>
+		<tr valign="top">
+			<th scope="row"><label for="background_menu">Couleur de fond du menu</label></th>
+			<td><input type="text" id="background_menu" name="background_menu" class="background_menu" value="'.get_option( 'background_menu' ).'" /></td>
 		</tr>
 	</table>
 
@@ -334,46 +344,45 @@ function myThemeCss( )
         <?php
     }
 ?>
-			
+	<?php if ((get_option('image_background') != '') || (get_option('background_color')!= '') ||(get_option('image_banner') != '')|| (get_option('background_color')!= '')|| (get_option('text_color') != '')|| (get_option('background_menu') != '')) { ?>		
 	<style type="text/css">
 		<?php if (get_option('image_background') != ''){ ?>
 		body, .banner {
 			background: inherit;
 			
 			background-image: url(<?php echo get_option( 'image_background');?>);
-			color: <?php echo get_option( 'text_color', '#222' ); ?>;
+			
 		}
 		.body{
 			background-color: white;
 		}
 		<?php } 
-		 elseif (get_option('background_color') != ''){ ?>
-		body, .banner {
-			background: inherit;
-			
-			background: <?php echo get_option( 'background_color');?>;
-			
-		}
-		.body{
-			background-color: white;
-		}
-		 <?php }
+		
 		 if (get_option('image_banner') != ''){ ?>
 		#banner-text{
 			background-image: url(<?php echo get_option( 'image_banner');?>);
 		}
 		<?php } 
-		if (get_option('background_color') != ''){ ?>
-		.side{border: 1px solid green; width: 29.4%; background-color:<?php echo get_option('background_color'); ?>;}
-			.login-box{background-color: <?php echo get_option('background_color'); ?>;}
+		if (get_option('background_color') != ''){ ///// poiur la side bar ?>
+			.side{border: 1px solid green; width: 29.4%; background-color:<?php echo get_option('background_color'); ?>;}
+				.login-box{background-color: <?php echo get_option('background_color'); ?>;}
 			<?php } 
 		if (get_option('text_color') != ''){ ?>
 				.welcome_user{color: <?php echo get_option( 'text_color' ); ?>;}
 				    .welcome_user a{text-decoration:none; font-weight: bold; color: <?php echo get_option( 'text_color' ); ?>;}
 
 				.disconnect_user{text-decoration:none; color: <?php echo get_option( 'text_color' ); ?>;}
+		<?php } 
+				if (get_option('background_menu') != ''){ ?>
+				
+					#menu{margin: 0 auto 0 auto; height:30px; width: 976px; background-color: <?php echo get_option( 'background_menu' ); ?>; border: 1px solid <?php echo get_option( 'background_menu' ); ?>; !important}
+					#menu ul{list-style:none; margin:0; padding:0; font:bold 12pt Arial, Helvetica, sans-serif;}
+					#menu li{position:relative; display:block; float:left; margin-right:1px;}
+					#menu a{display:block; background-color: <?php echo get_option( 'background_menu' ); ?>; color:#eee; text-decoration:none; padding:0 10px; line-height:31px;}
+					
 		<?php } ?>
 	</style>
+	<?php } ?>
 <?php
 }
 
@@ -438,8 +447,9 @@ function switch_session() {
     }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-
-	/*print_r($q);*/
+//	echo "<pre>";
+//	print_r($q);
+//	echo "</pre>";
 
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
     if( ! is_admin() && $q->is_main_query() ) {
@@ -485,7 +495,7 @@ function switch_output_order( $q ) {
 			}
 		}
 	}
-
+	
 	$q->set('meta_query',$first_array);
 	
       }

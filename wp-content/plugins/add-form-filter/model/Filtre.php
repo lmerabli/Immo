@@ -189,13 +189,12 @@ class Filtre {
 				)
 		);
 		
-		/*
 		$wpdb->query(
 				$wpdb->prepare(
 						"DELETE FROM ".AddFormFilter::DATABASE_PREFIX.AddFormFilter::TABLE_NAME_FIELD." WHERE id_filter = %d;"
 						, $this->id
 				)
-		);*/
+		);
 		
 		if (count($this->aoFields) > 0) {
 			foreach ($this->aoFields as $field) {

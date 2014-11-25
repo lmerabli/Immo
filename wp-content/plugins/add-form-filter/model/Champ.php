@@ -64,35 +64,20 @@ class Champ {
 	public function constructHtml() {
 		switch ($this->type) {
 			case self::TYPE_INPUT:
-				$this->valueHtml = '<tr>
-										<td>
-											<label for="'.$this->getKey().'">'.$this->label.': </label>
-										</td>
-										<td>
-											<input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().']" value="" />
-										</td>
-									</tr>';
+				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.': </label>
+									<input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().'][]" value="" />
+									';
 				break;
 			case self::TYPE_CHECKBOX:
 				$checked = "";
 				
 				if ($this->additionalInformations['is_coche_defaut']) $checked = "checked";
 				
-				$this->valueHtml = '<tr>
-										<td></td>
-										<td>
-											<input type="checkbox" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.'" value="'.$this->additionalInformations["checkbox_value"].']" '.$checked.' />'.$this->label
-									.'	</td>
-									</tr>';
+				$this->valueHtml = '<input type="checkbox" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.'][]" value="'.$this->additionalInformations["checkbox_value"].']" '.$checked.' />'.$this->label;
 				break;
 			case self::TYPE_CALENDRIER:
-				$this->valueHtml = '<tr>
-										<td>
-											<label for="'.$this->getKey().'">'.$this->label.'</label>
-										</td><td>
-											<input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().']" class="datepicker" value="" />
-										</td>
-									</tr>';
+				$this->valueHtml = '<label for="'.$this->getKey().'">'.$this->label.'</label>
+									<input type="text" id="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->getMetaKey().'][]" class="datepicker" value="" />';
 				break;
 			case self::TYPE_INTERVALLE:
 				$this->valueHtml = '
@@ -109,32 +94,26 @@ class Champ {
 				</div>';
 				break;
 			case self::TYPE_LISTE_DEROULANTE:
-				$this->valueHtml .= '<tr>
-										<td>
-											<label for="'.$this->getKey().'">'.$this->label.': </label>
-										</td>';
+				$this->valueHtml .= '<label for="'.$this->getKey().'">'.$this->label.': </label>';
 				
-				$this->valueHtml .= '<td>
-										<select id ="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.']">';
+				$this->valueHtml .= '<select id ="'.$this->getKey().'" name="'.AddFormFilter::HTML_TABLE_POST_NAME.'['.$this->metaKey.'][]">';
 				
 				foreach ($this->additionalInformations["items"] as $item) {
 					$this->valueHtml .= '<option value="'.$item.'">'.$item.'</option>';
 				}
 				
-				$this->valueHtml .= '	</select>
-									</td></tr>';
+				$this->valueHtml .= '</select>';
 				break;
 			default:
 				break;
 		}
 	}
 	
+	/**
+	 * Pas de modifications (UPDATE) nécessaires
+	 */
 	public function save() {
-		if ($this->id > 0) {
-			$this->update();
-		} else {
-			$this->insert();
-		}
+		$this->insert();
 	}
 	
 	public function getId() {
