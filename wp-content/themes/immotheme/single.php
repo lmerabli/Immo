@@ -9,7 +9,7 @@
 	<div class="single-post-view">
 
 		<!-- Partie centrale -->
-		<div id="primary" class="site-content">
+		<div id="primary" class="site-content body">
 			<div id="content" role="main">
 
 				<?php while ( have_posts() ) : the_post(); ?>
@@ -51,7 +51,7 @@
 		</div>
 
 		<!-- Colonne de droite -->
-		<div class="sidebar-single-post">
+		<div class="sidebar-single-post side">
 			<div class="login-box">
 				<!--SI L'UTILISATEUR EST CONNECTE-->
 				<?php if( is_user_logged_in() ): ?>
