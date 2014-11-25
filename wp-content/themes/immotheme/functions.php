@@ -423,35 +423,34 @@ function fL_formulaire($select="")
 }
 
 
-//add_action( 'init', 'switch_session' );
-//function switch_session() {
-//	// J'initialize la session
-//	if( ! session_id() )
-//	    session_start();
-//
-//	// Si le switcher à été utilisé, on change la valeur
-//	if( isset( $_POST[ 'post-order' ] ) ) {
-//	    $_SESSION[ 'post-order' ] = ( 'ASC' == $_POST['post-order'] ) ? 'ASC' : 'DESC';
-//	}
-//
-//	if( isset( $_POST[ 'post-order-by' ] ) ) {
-//	    $_SESSION[ 'post-order-by' ] = ( 'price' == $_POST['post-order-by'] ) ? 'price' : 'date';
-//	}
-//
-//	// S'il n'y a pas d'ordre de défini, on en met un par défaut
-//	if( ! isset( $_SESSION[ 'post-order' ] ) )
-//	    $_SESSION[ 'post-order' ] = 'ASC';
-//
-//	if( ! isset( $_SESSION[ 'post-order-by' ] ) )
-//	    $_SESSION[ 'post-order-by' ] = 'price';
-//
-//    }
+add_action( 'init', 'switch_session' );
+function switch_session() {
+	// J'initialize la session
+	if( ! session_id() )
+	    session_start();
+
+	// Si le switcher à été utilisé, on change la valeur
+	if( isset( $_POST[ 'post-order' ] ) ) {
+	    $_SESSION[ 'post-order' ] = ( 'ASC' == $_POST['post-order'] ) ? 'ASC' : 'DESC';
+	}
+
+	if( isset( $_POST[ 'post-order-by' ] ) ) {
+	    $_SESSION[ 'post-order-by' ] = ( 'price' == $_POST['post-order-by'] ) ? 'price' : 'date';
+	}
+
+	// S'il n'y a pas d'ordre de défini, on en met un par défaut
+	if( ! isset( $_SESSION[ 'post-order' ] ) )
+	    $_SESSION[ 'post-order' ] = 'ASC';
+
+	if( ! isset( $_SESSION[ 'post-order-by' ] ) )
+	    $_SESSION[ 'post-order-by' ] = 'price';
+
+    }
 add_action( 'pre_get_posts', 'switch_output_order' );
 function switch_output_order( $q ) {
-	//echo "<pre>";
-	//print_r($_POST['add_form_filter']);
-	//print_r($q);
-	//echo "</pre>";
+
+	/*print_r($q);*/
+
     // Si on est en front et qu'il s'agit de la requête principale de la page d'archive
     if( ! is_admin() && $q->is_main_query() ) {
       if (isset($_POST['add_form_filter'])){
@@ -498,10 +497,10 @@ function switch_output_order( $q ) {
 	}
 	//$first_array['meta_query']=$array;
 	$q->set('meta_query',$first_array);
-//	      if(array_key_exists('_date', $_POST['add_form_filter'])){
-//		      
-//	      }
-//	      else
+	//	  if(array_key_exists('_date', $_POST['add_form_filter'])){
+	//		      
+	//	  }
+	//	  else
 		//$q->set('meta_query',$_POST['add_form_filter']);
 	     
         /* 
